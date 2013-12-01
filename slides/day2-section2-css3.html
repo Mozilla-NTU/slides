@@ -5,35 +5,93 @@
     <title>Template</title>
     <link rel="stylesheet" href="../css/reveal.css">
     <link rel="stylesheet" href="../css/theme/default.css" id="theme">
+    <link rel="stylesheet" href="../lib/css/zenburn.css">
+    <link rel="stylesheet" type="text/css" href="../css/wangyan/css3.css">
   </head>
   <body>
     <div class="reveal">
       <div class="slides">
         <section>
-<ul>
-    <li>Course Introduction</li>
-
-    <li>Course software</li>
-
-    <li>What is a HTML and HTML5?</li>
-
-    <li>Getting started with tags</li>
-
-    <li>How to run web pages</li>
-
-    <li>Viewing your web pagess</li>
-</ul>
+          <h1>CSS3</h1>
         </section>
+        <section>
+          <section><h2>the next version of CSS</h2></section>
+          <section><h2>Modules</h2></section>
+        </section>
+        <section>
+          <h2>Selectors</h2>
+          list all new selectors....
+        </section>
+        <section><h2>border-radius</h2></section>
+        <section><h2>Backgrounds</h2></section>
+        <section>
+          <section><h2>Shadow</h2></section>
+          <section><h2>text shadow</h2></section>
+          <section><h2>box shadow</h2></section>
+        </section>
+        <section><h2>Colors</h2></section>
+        <section><h2>Fonts</h2></section>
+        <section>
+          <h2>gradient</h2>
+          <pre><code class="css">linear-gradient(to right, red , blue);</code></pre>
+          <div style=""></div>
+        </section>
+        <section>
+          <section><h2>Transformations</h2></section>
+          <section>
+          <ul>
+            <li>scale</li>
+            <li>skew</li>
+            <li>translate</li>
+            <li>rotate</li>
+          </ul>
+          </section>
+          <section>
+          <h2>example</h2>
+          <pre><code>
+div
+{
+transform: scale(1.5) rotate(30deg);
+-ms-transform: scale(1.5) rotate(30deg); /* IE 9 */
+-webkit-transform: scale(1.5) rotate(30deg); /* Safari and Chrome */
+}
+          </code></pre>
+          </section>
+          <section><h2>2D</h2></section>
+          <section><h2>3D</h2></section>
+        </section>
+        <section><h2>transition</h2></section>
+        <section><h2>animation</h2></section>
+        <section><h2>Multiple Columns</h2></section>
+        <section><h2>User Interface </h2></section>
       </div>
     </div>
     <script src="../lib/js/head.min.js"></script>
     <script src="../js/reveal.js"></script>
     <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
         controls: true,
         progress: true,
         history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: '../lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: '../plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: '../plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
       });
+
     </script>
   </body>
 </html>
