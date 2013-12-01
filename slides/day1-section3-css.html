@@ -4,36 +4,120 @@
     <meta charset="utf-8">
     <title>Template</title>
     <link rel="stylesheet" href="../css/reveal.css">
-    <link rel="stylesheet" href="../css/theme/default.css" id="theme">
+    <link rel="stylesheet" href="../css/theme/solarized.css" id="theme">
+    <link rel="stylesheet" href="../lib/css/zenburn.css">
   </head>
   <body>
     <div class="reveal">
       <div class="slides">
+      <section>
+        <h1>CSS</h1>
+      </section>
+      <section>
+        <h2>Cascading Style Sheets</h2>
+      </section>
+      <section>
         <section>
-<ul>
-    <li>Course Introduction</li>
-
-    <li>Course software</li>
-
-    <li>What is a HTML and HTML5?</li>
-
-    <li>Getting started with tags</li>
-
-    <li>How to run web pages</li>
-
-    <li>Viewing your web pagess</li>
-</ul>
+          <h2>Syntax</h2>
+          <img src="../img/wangyan/css-syntax.jpg">
         </section>
+        <section>
+          <h2>Selectors</h2>
+          <ul>
+            <li>Elemento: h1 {....}</li>
+            <li>Class: .class {....}</li>
+            <li>Id: #class {....}</li>
+            <li>Attribute: input[type='radio'] {....}</li>
+            <li>Other: new from CSS3</li>
+          </ul>
+        </section>
+      </section>
+      <section>
+        <section><h2>How to Use ?</h2></section>
+        <section>
+          <h3>Link Tag</h3>
+          <pre><code>&lt;head> &lt;link rel="stylesheet" htref="theme.css"> &lt;head></code></pre>
+          <h3>Inline Styling</h3>
+          <pre><code>&lt;p style='color: orange; font-size: 14px'> text &lt;p></code></pre>
+          <h3>Style Tag</h3>
+          <pre><code>&lt;style type="text/css"> 
+p {
+  color: orange; 
+  font-size: 14px
+  }
+&lt;style></code></pre>
+        </section>
+      </section>
+      <section>
+        <section>
+          <h2>Box Model</h2>
+          <img src="../img/wangyan/box-model.jpg">
+        </section>
+        <section>
+          <img src="../img/wangyan/box-width.jpg" width="400">
+          <pre><code style="font-size: 35px; line-height: 50px;">.container {
+  width: 50px;
+  padding: 0 10px;
+  border: 1px solid #333;
+  margin: 0;
+}</code></pre>
+        </section>
+      </section>
+      <section>
+        <h2>Position</h2>
+        <ul>
+          <li>Static</li>
+          <li>Fixed</li>
+          <li>Relative</li>
+          <li>Absolute</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Inline vs Block Elements</h2>
+        <ul>
+          <li>h1, p, div</li>
+          <li>span, a</li>
+          <li>change by display: inline, block, inline-block </li>
+        </ul>
+      </section>
+      <section>
+         <h2>Float</h2>
+      </section>
+      <section>
+        <h2>TIPS</h2>
+        <ul>
+          <li>Cross Browsers</li>
+          <li>Forget IE ...</li>
+        </ul>
+      </section>
       </div>
     </div>
     <script src="../lib/js/head.min.js"></script>
     <script src="../js/reveal.js"></script>
     <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
         controls: true,
         progress: true,
         history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: '../lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: '../plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: '../plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
       });
+
     </script>
   </body>
 </html>
