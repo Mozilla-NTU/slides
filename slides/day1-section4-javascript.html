@@ -10,20 +10,171 @@
     <div class="reveal">
       <div class="slides">
         <section>
-<ul>
-    <li>Course Introduction</li>
-
-    <li>Course software</li>
-
-    <li>What is a HTML and HTML5?</li>
-
-    <li>Getting started with tags</li>
-
-    <li>How to run web pages</li>
-
-    <li>Viewing your web pagess</li>
-</ul>
+          <h1>JavaScript</h1>
+          <pre>console.log("Hello World");</pre>
         </section>
+        <section>
+          <h2>Numbers</h2>
+          Numbers in JavaScript are IEEE-754 double pricision format.
+          <img src="http://chortle.ccsu.edu/AssemblyTutorial/Chapter-30/IEEE754.jpg"/>
+          <small>http://chortle.ccsu.edu/AssemblyTutorial/Chapter-30/IEEE754.jpg</small>
+          <br/>
+          +/- 2^53 maximum int value.
+          <pre>
+            Math.pow(2, 53) === Math.pow(2, 53) + 1; // true
+          </pre>
+          Infinity, -Infinity, NaN, 0, -0.
+          <pre>
+            0.1 + 0.2 === 0.3; // false
+          </pre>
+        </section>
+        <section>
+          <h2>Strings</h2>
+          <pre>
+            "abc" + "def"; // "abcdef"
+            "hello world"[4]; // "o"
+          </pre>
+          UCS2 encoding.
+        </section>
+        <section>
+          <h2>Dates</h2>
+          <pre>
+            Date.now(); // Milliseconds since Epoch (Jan 1 1970)
+            var today = new Date();
+            today.getDate();
+            today.getMonth();
+            today.getFullYear();
+          </pre>
+        </section>
+        <section>
+          <h2>Arrays</h2>
+          <pre>
+          var a = 42;
+          var myArr = [a, 1, "Nick"];
+          myArr[0]; // 42
+          myArr[-1]; // undefined
+          myArr.length; // 3
+          myArr.length = 1; // array truncation
+          console.log(myArr); // [42]
+          </pre>
+        </section>
+        <section>
+          <h2>Objects</h2>
+          Object Literal
+          <pre>
+            var nick = {
+              name: "Nick",
+              age: 23
+            };
+            nick.name; // "Nick"
+            nick["age"]; // 23
+          </pre>
+          JavaScript Object Notation (JSON)
+          <pre>
+          {
+            "data": 12345,
+            "from": "Nick"
+          }
+          </pre>
+        </section>
+        <section>
+          <h2>undefined and null</h2>
+          <pre>
+            var a;
+            a; // undefined
+            var b = null;
+            b; // null
+          </pre>
+          Always define variables, use null to remove reference to a variable.
+          <pre>
+            var a = 5;
+            // process a
+            a = null; // a no longer needed
+          </pre>
+          Functions with no return value return undefined, and parameters not
+          passed are also undefined.
+        </section>
+        <section>
+          <h2>Regular Expressions</h2>
+          Describe state machines useful for pattern matching.
+          <pre>
+            var re = /firefox/;
+            re.test("hello firefox, how are you?"); // true
+            "a1bb22ccc333dddd4444".match(/[0-9]{3}[a-z]{3}/)[0]; // "333ddd"
+          </pre>
+          A quick reference is helpful in writing "regexes."
+        </section>
+        <section>
+          <h2>Functions</h2>
+          <pre>
+            // named function
+            function addTwo (num) {
+              return num + 2;
+            };
+            // anonymous function assigned to a variable.
+            var addThree = function (num) {
+              return num + 3;
+            };
+            addThree(addTwo(1)); // 6
+          </pre>
+        </section>
+        <section>
+          <h2>Dynamically Typed</h2>
+          Values have types, not variables.
+          <pre>
+            var a = 5;
+            typeof a; // "number"
+            a = "nick";
+            typeof a; // "string"
+          </pre>
+          You may reassign variables values of different types.
+        </section>
+        <section>
+          <h2>Loosely Typed</h2>
+          Values can be coerced (casted) from one type to another based on
+          operator.
+          <pre>
+            1 + 2; // 3
+            "1" + "2"; // "12"
+            1 + "2"; // "12"
+            "1" + 2; // "12"
+            1 == "1" // true
+            1 === "1" // false
+          </pre>
+          Double equals operator, ==, can be the source of many bugs.  Use
+          triple equals, generally.
+        </section>
+        <section>
+          <h2>this (context)</h2>
+          this is a variable that refers to a particular execution context.
+        </section>
+        <section>
+          <h2>window</h2>
+          window refers to the global context.
+          <pre>
+            var a = 5;
+            console.log(a); // 5
+            window.console.log(a); // 5
+            window.console.log(window.a); // 5
+            this.a; // 5
+            this === window; // true
+            (function context () { return this; })() === window; // true
+          </pre>
+        </section>
+        <section>
+          <h2>Constuctors</h2>
+          <pre>
+            function Dog (name, kind) {
+              this.name = name;
+              this.kind = kind;
+            };
+            var pet = new Dog("Winston", "English Bulldog");
+            pet.name; // "Winston"
+          </pre>
+        </section>
+        <section><h2>Scoping</h2></section>
+        <section><h2>Prototypical Inheritence</h2></section>
+        <section><h2></h2></section>
       </div>
     </div>
     <script src="../lib/js/head.min.js"></script>
