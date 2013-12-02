@@ -10,19 +10,88 @@
     <div class="reveal">
       <div class="slides">
         <section>
-<ul>
-    <li>Course Introduction</li>
-
-    <li>Course software</li>
-
-    <li>What is a HTML and HTML5?</li>
-
-    <li>Getting started with tags</li>
-
-    <li>How to run web pages</li>
-
-    <li>Viewing your web pagess</li>
-</ul>
+          <h1>SVG, Canvas, WebGL</h1>
+        </section>
+        <section>
+          <h2>SVG</h2>
+          Scalable Vector Graphics
+          <br/>
+          <svg width="1000px" height="100px" style="overflow: initial;">
+            <rect width="200px" height="100px" fill="blue" stroke="red"/>
+            <circle cx="400px" cy="100px" r="100px" fill="green" stroke="orange"/>
+          </svg>
+          <pre>
+            &lt;svg&gt;
+              &lt;rect width="200px" height="100px" fill="blue" stroke="red"/&gt;
+              &lt;circle cx="400px" cy="100px" r="100px" fill="green" stroke="orange"/&gt;
+            &lt;/svg&lt;
+          </pre>
+        </section>
+        <section>
+          <h2>Benefits</h2>
+          Easy to scale image.  Data stored in XML derivative can be searched,
+          indexed, or scripted.  Reference based graphics.
+        </section>
+        <section>
+          <h2>Scaling</h2>
+          <img src="../images/circle50.png" style="border: initial;"/>
+          <img src="../images/circle50.png" style="border: initial;" width="100px" height="100px"/>
+          <svg>
+            <circle fill="lime" r="25" cx="25%" cy="50%"/>
+            <circle fill="lime" r="50" cx="75%" cy="50%"/>
+          </svg>
+          <p>
+            Image scaling vs SVG.
+          </p>
+        </section>
+        <section>
+          <h2>Programmatically creating SVG</h2>
+          Uses a seperate namespace.
+          <a>http://www.w3.org/2000/svg</a> vs XHTML's <a>http://www.w3.org/1999/xhtml</a>.
+          <br/>
+          <svg id="slide4SVG"></svg>
+          <script>
+            var ns = "http://www.w3.org/2000/svg";
+            var circle = document.createElementNS(ns, "circle");
+            circle.setAttribute("fill", "lime");
+            circle.setAttribute("r", "25");
+            circle.setAttribute("cx", "50%");
+            circle.setAttribute("cy", "50%");
+            document.getElementById("slide4SVG").appendChild(circle);
+          </script>
+          <pre>
+            &lt;svg id="slide4SVG"&gt;&lt;/svg&gt;
+            &lt;script&gt;
+              var ns = "http://www.w3.org/2000/svg";
+              var circle = document.createElementNS(ns, "circle");
+              circle.setAttribute("fill", "lime");
+              circle.setAttribute("r", "25");
+              circle.setAttribute("cx", "50%");
+              circle.setAttribute("cy", "50%");
+              document.getElementById("slide4SVG").appendChild(circle);
+            &lt;/script&gt;
+          </pre>
+        </section>
+        <section>
+          <h2>Canvas (Two Dimensional Context)</h2>
+          <a href="https://github.com/nickdesaulniers/canvas2dcontext/tree/master/examples">Detour</a>
+        </section>
+        <section>
+          <h2>WebGL</h2>
+          <p>
+            Canvas in a three dimensional context.  Can also draw two
+            dimensions very quickly.
+          </p>
+        </section>
+        <section>
+          <h2>Shaders</h2>
+          <p>
+            A shader program consists of one
+            vertex shader and one fragment shader.  Shaders can be created
+            programmatically.  A webgl context can have many shader programs.
+          </p>
+          <img src="http://devfiles.myopera.com/articles/8442/pipeline.jpg"/>
+          <small>http://devfiles.myopera.com/articles/8442/pipeline.jpg</small>
         </section>
       </div>
     </div>
