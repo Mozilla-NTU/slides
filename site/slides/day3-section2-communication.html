@@ -15,10 +15,10 @@
           <h2>HTML5 Communications</h2>
         </section>
         <section>
-          <h4>Cross Document Messaging</h4>
-          <h4>XMLHttpRequest Level 2</h4>
-          <h4>ServerSent Event</h4>
-          <h4>WEBSOCKET</h4>
+          <h3>Cross Document Messaging</h3>
+          <h3>XMLHttpRequest Level 2</h3>
+          <h3>ServerSent Event</h3>
+          <h3>WEBSOCKET</h3>
         </section>
         <section>
           <section><h2>Cross Document Messaging</h2></section>
@@ -56,12 +56,12 @@ recipient.postMessage('hi there');
         <section>
           <section><h2>WebSocket</h2></section>
           <section>
-            <h2>For RealTime</h2>
             <blockquote>
               “Reducing kilobytes of data to 2 bytes…and reducing latency from 150 ms to 50 ms is far more than marginal. In fact, these two factors alone are enough to make WebSocket seriously interesting to Google.” 
             </blockquote>
           </section>
           <section>
+            <h2>For RealTime</h2>
             <dl class="text-left">
               <dt>Protocol</dt>
               <dd>allows for a persistent, full-duplex communication between a client and remote host.</dd>
@@ -104,7 +104,7 @@ recipient.postMessage('hi there');
         <section>
           <section>
             <h2>AJAX Long-polling</h2>
-            <p style="font-size: 18px;">Client sends AJAX request to server, server keeps request open until response available.<br>
+            <p style="font-size: 26px;">Client sends AJAX request to server, server keeps request open until response available.<br>
             Client immediately sends another long-poll request after receiving response
             </p>
             <img src="../img/wangyan/ajax-long-polling.png" width="500">
@@ -131,7 +131,7 @@ recipient.postMessage('hi there');
         <section>
           <section>
             <h2>Server-Sent Events(SSE)</h2>
-            <p style="font-size: 18px;">Client opens connection with server<br>
+            <p style="font-size: 26px;">Client opens connection with server<br>
             Server sends data to client as it becomes available 
             </p>
             <img src="../img/wangyan/sse.png" width="500">
@@ -177,6 +177,134 @@ recipient.postMessage('hi there');
               </ul>
             </div>            
           </section>          
+        </section>
+        <section>
+           <h2>But how it works ?</h2>
+        </section>
+        <section>
+          <section>
+            <h2>HTTP Handshake</h2>
+          </section>
+          <section>
+            <h2>Request</h2>
+            <pre><code>
+GET ws://echo.websocket.org/?encoding=text HTTP/1.1
+Origin: http://websocket.org
+Cookie: __utma=99as
+Connection: Upgrade
+Host: echo.websocket.org
+Sec-WebSocket-Key: uRovscZjNol/umbTt5uKmw==
+Upgrade: websocket
+Sec-WebSocket-Version: 13
+            </code></pre>
+          </section>
+          <section>
+            <h2>Response</h2>
+            <pre><code>
+HTTP/1.1 101 WebSocket Protocol Handshake
+Date: Fri, 10 Feb 2012 17:38:18 GMT
+Connection: Upgrade
+Server: Kaazing Gateway
+Upgrade: WebSocket
+Access-Control-Allow-Origin: http://websocket.org
+Access-Control-Allow-Credentials: true
+Sec-WebSocket-Accept: rLHCkw/SKsO9GAH/ZSFhBATDKrU=
+Access-Control-Allow-Headers: content-type             
+            </code></pre>
+          </section>
+          <section>
+            <h2>Full-duplex Connections</h2>
+          </section>
+        </section>
+        <section>
+          <section><h2>WebSocket API</h2></section>
+          <section>
+            <h2>URI Structure</h2>
+            <p>Define new protocols, ws:// and wss:// </p>
+          </section>
+          <section>
+            <h2>Setup Connection</h2>
+            <pre><code>
+var connection = new WebSocket('ws://subdomain.examnple.com/some-endpoint')
+            </code></pre>
+          </section>
+          <section>
+            <h2>Listen Event</h2>
+            <pre><code>
+connection.onopen = function(e) {
+  console.log("Connected");
+};
+
+connection.onmessage = function(e) {
+  console.log( "Received: " + e.data);
+};
+
+connection.onclose = function(e) {
+  console.log("Connection closed");
+};              
+
+connection.onerror = function(e) {
+  console.log("There are some errors: e.data");
+};              
+
+            </code></pre>
+          </section>
+          <section>
+            <h2>Message Date Formate</h2>
+            <ul>
+              <li>String</li>
+              <li>ArrayBuffer</li>
+              <li>Blob</li>
+            </ul>
+          </section>
+          <section>
+            <h2>not support JSON ?</h2>
+            <p class="fragment">
+              using JSON.stringify and JSON.parse to handle it
+            </p>
+          </section>
+        </section>
+        <section>
+          <section><h2>WEBSOCKET SERVER</h2></section>
+          <section>
+            <h2>Many Choices</h2>
+            <p>Server can be built in any language</p>
+            <p>Existed libraries for nodejs, ruby, python, php</p>
+          </section>
+          <section>
+            <h2>Socket.io is awesome</h2>
+          </section>
+          <section>
+            <h2>Easy to use</h2>
+            <pre><code class="javascript">
+var io = require('socket.io').listen(80);
+
+io.sockets.on('connection', function (socket) {
+  socket.emit('news', { hello: 'world' });
+  socket.on('my other event', function (data) {
+    console.log(data);
+  });
+});              
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <h2>Use Cases</h2>
+          <ul class="fragment">
+            <li>Games</li>
+            <li>Notifications</li>
+            <li>Collaboration</li>
+            <li>Statistics</li>
+            <li>Chat</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Demo</h2>
+        </section>
+        <section>
+          <h2>Use Your Imagination</h2>
         </section>
       </div>
     </div>
