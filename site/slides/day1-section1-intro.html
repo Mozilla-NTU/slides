@@ -2,210 +2,38 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>HTML5 Communications</title>
+    <title>Template</title>
     <link rel="stylesheet" href="../css/reveal.css">
     <link rel="stylesheet" href="../css/theme/default.css" id="theme">
-    <link rel="stylesheet" href="../lib/css/zenburn.css">
-    <link rel="stylesheet" type="text/css" href="../css/wangyan/custom.css">
   </head>
   <body>
     <div class="reveal">
       <div class="slides">
         <section>
-          <h2>HTML5 Communications</h2>
-        </section>
-        <section>
-          <h4>Cross Document Messaging</h4>
-          <h4>XMLHttpRequest Level 2</h4>
-          <h4>ServerSent Event</h4>
-          <h4>WEBSOCKET</h4>
-        </section>
-        <section>
-          <section><h2>Cross Document Messaging</h2></section>
-          <section>
-            <h3>postMessage API</h3>
-            <pre><code>
-if (typeof window.postMessage === “undefined”) {
-  // postMessage not supported in this browser
-}
+<ul>
+    <li>Course Introduction</li>
 
-// in the recipient code
-recipient.onmessage = function (event) {
-  console.log('received message: ' + event.data);
-};
+    <li>Course software</li>
 
-// from the sender code
-recipient.postMessage('hi there');
-            </code></pre>
-          </section>
-        </section>
-        <section>
-          <section><h2>XMLHttpRequest Level 2</h2></section>
-          <section>
-            <h3>the new version of XMLHttpRequest</h3>
-            <ul>
-              <li>Cross-origin XMLHttpRequests</li>
-              <li>Progress events</li>
-              <li>Binary Data</li>
-            </ul>
-          </section>
-        </section>
-        <section>
-          <h2><del>ServerSent Event</del></h2>
-        </section>
-        <section>
-          <section><h2>WebSocket</h2></section>
-          <section>
-            <h2>For RealTime</h2>
-            <blockquote>
-              “Reducing kilobytes of data to 2 bytes…and reducing latency from 150 ms to 50 ms is far more than marginal. In fact, these two factors alone are enough to make WebSocket seriously interesting to Google.” 
-            </blockquote>
-          </section>
-          <section>
-            <dl class="text-left">
-              <dt>Protocol</dt>
-              <dd>allows for a persistent, full-duplex communication between a client and remote host.</dd>
-              <dt>HTML5</dt>
-              <dd>defines a JavaScript API for the WebSocket protocol within the browser, allowing bi-directional communication between the browser and server.</dd>
-            </dl>
-          </section>
-        </section>
-        <section>
-          <h2>Why ?</h2>
-          <p class="fragment"> Web apps need to communicate with server in real-time </p>
-        </section>
-        <section>
-          <h2>Can't we already do that ?</h2>
-        </section>
-        <section>
-          <section>
-            <h2>Ajax Polling</h2>
-            <p>Client sends AJAX request to server, server responds</p>
-            <img src="../img/wangyan/ajax-polling.jpg" width="500">
-          </section>
-          <section>
-            <div class="text-left">
-              <h3>Works When:</h3>
-              <ul>
-                <li>client needs to request data occasionally</li>
-                <li>client needs to send data occasionally</li>
-              </ul>
-            </div>
-            <br>
-            <div class="text-left">
-              <h3>Falls short When:</h3>
-              <ul>
-                <li>client needs to send data often</li>
-                <li>server needs to iniate and send data without client request</li>
-              </ul>
-            </div>            
-          </section>
-        </section>
-        <section>
-          <section>
-            <h2>AJAX Long-polling</h2>
-            <p style="font-size: 18px;">Client sends AJAX request to server, server keeps request open until response available.<br>
-            Client immediately sends another long-poll request after receiving response
-            </p>
-            <img src="../img/wangyan/ajax-long-polling.png" width="500">
-          </section>
-          <section>
-            <div class="text-left">
-              <h3>Works When:</h3>
-              <ul>
-                <li>client needs to request one or a few pieces of data at a time</li>
-                <li>server needs to send one or a few pieces of data occastionally</li>
-              </ul>
-            </div>
-            <br>
-            <div class="text-left">
-              <h3>Falls short When:</h3>
-              <ul>
-                <li>client needs to send data often</li>
-                <li>client needs initiate and send data when available</li>
-                <li>server needs to send data often</li>
-              </ul>
-            </div>            
-          </section>          
-        </section>
-        <section>
-          <section>
-            <h2>Server-Sent Events(SSE)</h2>
-            <p style="font-size: 18px;">Client opens connection with server<br>
-            Server sends data to client as it becomes available 
-            </p>
-            <img src="../img/wangyan/sse.png" width="500">
-          </section>
-          <section>
-            <div class="text-left">
-              <h3>Works When:</h3>
-              <ul>
-                <li>server needs to send data often</li>
-                <li>browser support for WebSockets can't be relied upon</li>
-              </ul>
-            </div>
-            <br>
-            <div class="text-left">
-              <h3>Falls short When:</h3>
-              <ul>
-                <li>client needs to send any data</li>
-              </ul>
-            </div>            
-          </section>          
-        </section>
-        <section>
-          <section>
-            <h2>WEBSOCKETS</h2>
-            <p style="font-size: 18px;">Client opens connection with server<br>
-            Client and server send data to each other as data becomes available on either side 
-            </p>
-            <img src="../img/wangyan/websockets.png" width="500">
-          </section>
-          <section>
-            <div class="text-left">
-              <h3>Works When:</h3>
-              <ul>
-                <li>server and/or client need to send data often</li>
-                <li>browser support for WebSockets can be relied upon or fallbacks can be used</li>
-              </ul>
-            </div>
-            <br>
-            <div class="text-left">
-              <h3>Falls short When:</h3>
-              <ul>
-                <li>fallbacks can't be relied upon</li>
-              </ul>
-            </div>            
-          </section>          
+    <li>What is a HTML and HTML5?</li>
+
+    <li>Getting started with tags</li>
+
+    <li>How to run web pages</li>
+
+    <li>Viewing your web pagess</li>
+</ul>
         </section>
       </div>
     </div>
     <script src="../lib/js/head.min.js"></script>
     <script src="../js/reveal.js"></script>
     <script>
-
-      // Full list of configuration options available here:
-      // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
         controls: true,
         progress: true,
         history: true,
-        center: true,
-
-        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-        transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
-
-        // Optional libraries used to extend on reveal.js
-        dependencies: [
-          { src: '../lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: '../plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: '../plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-          { src: '../plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-          { src: '../plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-        ]
       });
-
     </script>
   </body>
 </html>
