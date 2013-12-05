@@ -2,10 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Template</title>
+    <title>CSS</title>
     <link rel="stylesheet" href="../css/reveal.css">
     <link rel="stylesheet" href="../css/theme/solarized.css" id="theme">
     <link rel="stylesheet" href="../lib/css/zenburn.css">
+    <link rel="stylesheet" href="../css/wangyan/custom.css">
   </head>
   <body>
     <div class="reveal">
@@ -15,6 +16,9 @@
       </section>
       <section>
         <h2>Cascading Style Sheets</h2>
+        <blockquote>
+          CSS is a style sheet language used for describing the presentation semantics of a document written in a markup language.
+        </blockquote>
       </section>
       <section>
         <section>
@@ -32,21 +36,33 @@
             <li>Other: new from CSS3</li>
           </ul>
         </section>
+        <section>
+          <h2>Selectors Specificity</h2>
+          <img src="../img/wangyan/css-specificity.jpg">
+          <p>Who is winner ?</p>
+        </section>
       </section>
       <section>
         <section><h2>How to Use ?</h2></section>
         <section>
-          <h3>Link Tag</h3>
-          <pre><code>&lt;head> &lt;link rel="stylesheet" htref="theme.css"> &lt;head></code></pre>
-          <h3>Inline Styling</h3>
-          <pre><code>&lt;p style='color: orange; font-size: 14px'> text &lt;p></code></pre>
-          <h3>Style Tag</h3>
-          <pre><code>&lt;style type="text/css"> 
+        <div class="text-left">
+          <dl>
+            <dt>Link Tag</dt>
+            <dd>
+              <pre><code>&lt;head> &lt;link rel="stylesheet" htref="theme.css"> &lt;head></code></pre>
+            </dd>
+            <dt>Inline Styling</dt>
+            <dd><pre><code>&lt;p style='color: orange; font-size: 14px'> text &lt;p></code></pre></dd>
+            <dt>Style Tag</dt>
+            <dd><pre><code>&lt;style type="text/css"> 
 p {
   color: orange; 
   font-size: 14px
   }
 &lt;style></code></pre>
+</dd>
+          </dl>
+        </div>
         </section>
       </section>
       <section>

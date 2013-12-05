@@ -1,0 +1,157 @@
+.text-left {
+	text-align: left;
+}
+
+.reveal dd {
+	padding-left: 1em;
+	margin-bottom: 1.15em;
+}
+
+//-------------- for example ----------------
+
+.border-example {
+	border-radius: 200px;
+	width: 200px;
+}
+
+#linear-gradient-example {
+  width: 100%;
+  height: 50px;
+  background: -webkit-linear-gradient(left,red,orange,yellow,green,blue,indigo,violet);
+  background: -o-linear-gradient(left,red,orange,yellow,green,blue,indigo,violet);
+  background: -moz-linear-gradient(left,red,orange,yellow,green,blue,indigo,violet);
+  background: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet); 
+}
+
+#radial-gradient-example {
+  width: 250px;
+  height: 250px;
+  margin: 0 auto;
+  background: -webkit-radial-gradient(center, closest-side, red,orange,yellow,green,blue,indigo,violet);
+  background: -o-radial-gradient(center, closest-side, red,orange,yellow,green,blue,indigo,violet);
+  background: -moz-radial-gradient(center, closest-side, red,orange,yellow,green,blue,indigo,violet);
+  background: radial-gradient(center, closest-side, red,orange,yellow,green,blue,indigo,violet); 
+} 
+
+@font-face {
+  font-family: myFont;
+  src: url(Motscroizes-Regular.ttf);
+}            
+
+#fonts_example {
+  font-family: myFont;
+}
+
+#transform_title_3d_example {
+   -webkit-transform: rotatey(-45deg) rotateX(35deg) rotateZ(-10deg);
+   -moz-transform: rotatey(-45deg) rotateX(35deg) rotateZ(-10deg);
+   transform: rotatey(-45deg) rotateX(35deg) rotateZ(-10deg);
+}
+
+#transform_title_2d_example {
+   -webkit-transform: translate(10px,-30px) scale(1.5) rotate(23deg) skew(20deg, 142deg);
+   -moz-transform: translate(10px,-30px) scale(1.5) rotate(23deg) skew(20deg, 142deg)
+   transform: translate(10px,-30px) scale(1.5) rotate(23deg) skew(20deg, 142deg)
+}
+
+#transform_box_3d_example {
+   background-color: red;
+   width: 250px;
+   height: 250px;
+   -webkit-transform: rotatey(-45deg);
+   -moz-transform: rotatey(-45deg);
+   transform: rotatey(-45deg);
+}
+
+#transition_title_example {
+	transion: all 2s;
+	-webkit-transition: all 2s;
+	-moz-transition: all 2s;
+}
+
+#transition_title_example:hover {
+   -webkit-transform: rotatey(-45deg) rotateX(35deg) rotateZ(-10deg) scale(1.5);
+   -moz-transform: rotatey(-45deg) rotateX(35deg) rotateZ(-10deg) scale(1.5);
+   transform: rotatey(-45deg) rotateX(35deg) rotateZ(-10deg) scale(1.5);	
+}
+
+@keyframes shake {
+	from {
+  		-webkit-transform: rotatey(45deg) rotateX(-35deg) rotateZ(10deg) scale(1.5);
+   		-moz-transform: rotatey(45deg) rotateX(-35deg) rotateZ(10deg) scale(1.5);
+   		transform: rotatey(45deg) rotateX(-35deg) rotateZ(10deg) scale(1.5);			
+	}
+	to {
+   		-webkit-transform: rotatey(-45deg) rotateX(35deg) rotateZ(-10deg) scale(1.5);
+   		-moz-transform: rotatey(-45deg) rotateX(35deg) rotateZ(-10deg) scale(1.5);
+   		transform: rotatey(-45deg) rotateX(35deg) rotateZ(-10deg) scale(1.5);			
+	}
+}
+
+@-webkit-keyframes shake {
+	from {
+  		-webkit-transform: rotatey(45deg) rotateX(-35deg) rotateZ(10deg) scale(1.5);
+   		-moz-transform: rotatey(45deg) rotateX(-35deg) rotateZ(10deg) scale(1.5);
+   		transform: rotatey(45deg) rotateX(-35deg) rotateZ(10deg) scale(1.5);			
+	}
+	to {
+   		-webkit-transform: rotatey(-45deg) rotateX(35deg) rotateZ(-10deg) scale(1.5);
+   		-moz-transform: rotatey(-45deg) rotateX(35deg) rotateZ(-10deg) scale(1.5);
+   		transform: rotatey(-45deg) rotateX(35deg) rotateZ(-10deg) scale(1.5);			
+	}
+}
+
+#animation_title_example {
+	animation: shake 3s ease-in-out 0s infinite alternate;
+	-webkit-animation: shake 3s linear 0s infinite alternate;
+}
+
+@keyframes move {
+	0%   {left:0px; top:0px;}
+	25%  {left:450px; top:0px;}
+	50%  {left:450px; top:450px;}
+	75%  {left:0px; top:450px;}
+	100% {left:0px; top:0px;}
+}
+
+@-webkit-keyframes move {
+	0%   {left:0px; top:0px;}
+	25%  {left:450px; top:0px;}
+	50%  {left:450px; top:450px;}
+	75%  {left:0px; top:450px;}
+	100% {left:0px; top:0px;}
+}
+
+.animation-container {
+	position: relative;
+	width: 600px;
+	height: 600px;
+	margin: 0 auto !important;
+	border: 1px solid #eee;
+}
+
+#animation_move_example {
+	width: 150px;
+	height: 150px;
+	border-radius: 150px;
+	position: absolute;
+	animation: move 8s linear 0s infinite alternate;
+	-webkit-animation: move 8s linear 0s infinite alternate;	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

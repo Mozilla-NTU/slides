@@ -2,72 +2,276 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Template</title>
+    <title>CSS3</title>
     <link rel="stylesheet" href="../css/reveal.css">
     <link rel="stylesheet" href="../css/theme/default.css" id="theme">
     <link rel="stylesheet" href="../lib/css/zenburn.css">
-    <link rel="stylesheet" type="text/css" href="../css/wangyan/css3.css">
+    <link rel="stylesheet" type="text/css" href="../css/wangyan/custom.css">
+    <link rel="stylesheet" type="text/css" href="../css/wangyan/spotlight.css">
   </head>
   <body>
     <div class="reveal">
       <div class="slides">
         <section>
-          <h1>CSS3</h1>
+          <div id="text-shadow-box">
+              <div class="wall">
+                  <p id="tsb-text" style="text-shadow: black 135px -243px 65.59640276132981px;">CSS3</p>
+
+                  <div></div>
+              </div>
+              <div id="tsb-spot" style="background-position: -435px -32px;"></div>
+          </div>
         </section>
         <section>
-          <section><h2>the next version of CSS</h2></section>
-          <section><h2>Modules</h2></section>
-        </section>
-        <section>
-          <h2>Selectors</h2>
-          list all new selectors....
-        </section>
-        <section><h2>border-radius</h2></section>
-        <section><h2>Backgrounds</h2></section>
-        <section>
-          <section><h2>Shadow</h2></section>
-          <section><h2>text shadow</h2></section>
-          <section><h2>box shadow</h2></section>
-        </section>
-        <section><h2>Colors</h2></section>
-        <section><h2>Fonts</h2></section>
-        <section>
-          <h2>gradient</h2>
-          <pre><code class="css">linear-gradient(to right, red , blue);</code></pre>
-          <div style=""></div>
-        </section>
-        <section>
-          <section><h2>Transformations</h2></section>
+          <section><h2>the next version of CSS</h2><div>↓</div></section>
           <section>
-          <ul>
-            <li>scale</li>
-            <li>skew</li>
-            <li>translate</li>
-            <li>rotate</li>
-          </ul>
+            <h3>CSS2 is "a specification" </h3>
+            <h3 class="fragment">CSS3 is "a collection of specifications"</h3>
           </section>
           <section>
-          <h2>example</h2>
+            <h2>Modules</h2>
+            <ul>
+              <li>Selectors</li>
+              <li>Box Model</li>
+              <li>Backgrounds and Borders</li>
+              <li>Image Values and Replaced Content</li>
+              <li>Text Effects</li>
+              <li>2D/3D Transformations</li>
+              <li>Animations</li>
+              <li>Multiple Column Layout</li>
+              <li>User Interface</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h2>Browser Prefix</h2>
+          <img src="../img/wangyan/prefix.jpg">
+        </section>
+        <section>
+          <section><h2>Selectors</h2><div>↓</div></section>
+          <section>
+            <h2>Basic Selectors</h2>
+            <pre><code class="style">
+h1 {...}
+.big {...}
+#field_id {...}
+* {...}
+:hover {...}
+.thing p {...}
+            </code></pre>
+          </section>
+          <section>
+            <h2>new Selectors</h2>
+            <div class="text-left">
+              <dl>
+                <dt>Attribute Selectors</dt>                
+<dd><pre><code>  input[type='text'] a[href ^="http://"] img[src $="png"]</code></pre></dd>
+                <dt>pseudo-class Selector</dt>
+<dd><pre><code>  a:link a:visited 
+  input:enabled input:disabled input:checked
+  li:first-child li:last-child li:nth-child li:only-child
+  p:not(.box) p:empty 
+  p:first-letter p:first-line
+  p:before p:after</code></pre></dd>
+              </dl>              
+                <dt>Combinators</dt>
+<dd><pre><code>  ul > li // Child Selector
+  h1 + p  // Adjacent Selector
+  h2 ～ p //  General Sibling
+</code></pre></dd>
+            </div>
+          </section>
+        </section>
+        <section>
+          <section><h2>border</h2></section>
+          <section>
+          <h2>border-radius</h2>
+          <img src="../img/wangyan/avatar.jpg" class="border-example">
+          <pre><code>img {border-radius: 280px;} // same as width will be a circle</code></pre>
+          </section>
+        </section>
+        <section>
+          <section><h2>Backgrounds</h2><img src="../img/wangyan/big-background.jpg" width="550"></section>
+          <section>
+          <h2>That's Easy ...</h2>
           <pre><code>
-div
-{
-transform: scale(1.5) rotate(30deg);
--ms-transform: scale(1.5) rotate(30deg); /* IE 9 */
--webkit-transform: scale(1.5) rotate(30deg); /* Safari and Chrome */
+background:url(tree.gif),url(flwr.gif);// multiple background images
+background-size:cover;//specify size of background images
+background-origin:content-box;//defines positioning area of background
+          </code></pre></section>
+        </section>
+        <section>
+          <section>
+          <h2 style="text-shadow: 0px 90px 10px orange;">Text Shadow</h2><br><br>
+            <pre><code>
+// text-shadow: h-shadow v-shadow  blur color;
+   text-shadow: 0px       90px     10px orange;
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <h2 id="fonts_example">Fonts</h2>
+          <pre><code>// wow! it looks like a function !
+@font-face {
+  font-family: myFont;
+  src: url(Motscroizes-Regular.ttf);
+}            
+
+#fonts_example {
+  font-family: myFont;
 }
           </code></pre>
-          </section>
-          <section><h2>2D</h2></section>
-          <section><h2>3D</h2></section>
         </section>
-        <section><h2>transition</h2></section>
-        <section><h2>animation</h2></section>
-        <section><h2>Multiple Columns</h2></section>
-        <section><h2>User Interface </h2></section>
+        
+        <section>
+          <section><h2>gradient</h2></section>
+          <section>
+            <h2>Linear Gradients</h2>
+            <h2 id="linear-gradient-example"></h2>
+            <pre><code>// linear-gradient(direction, color-stop1, color-stop2, ...);
+#linear-gradient-example {
+  background: -webkit-linear-gradient(left,red,orange,yellow,green,blue,indigo,violet);
+  background: -o-linear-gradient(left,red,orange,yellow,green,blue,indigo,violet);
+  background: -moz-linear-gradient(left,red,orange,yellow,green,blue,indigo,violet);
+  background: linear-gradient(to right,red,orange,yellow,green,blue,indigo,violet); 
+}        </code></pre>
+          </section>
+          <section>
+            <h2>Radial Gradients</h2>
+            <div id="radial-gradient-example"></div>
+            <pre><code>// radial-gradient(center, shape size,color-stop1, color-stop2, ...);
+#radial-gradient-example {
+  background: -webkit-radial-gradient(center,closest-side,red,orange,...);
+  background: -o-radial-gradient(center,closest-side,red,orange,...);
+  background: -moz-radial-gradient(center,closest-side,red,orange,...);
+  background: radial-gradient(center,closest-side,red,orange,...); 
+}        </code></pre>
+          </section>
+          <section>
+            <h2>USE YOUR IMAGINATION</h2>
+          </section>          
+        </section>
+        <section>
+          <section><h2 id="transform_title_3d_example">Transformations</h2></section>
+          <section>
+            <h2 id="transform_title_2d_example">2D</h2> 
+            <pre><code>
+#transform_title_2d_example {
+   -webkit-transform: translate(100px,-30px) scale(1.5) rotate(23deg) skew(20deg, 142deg);
+   -moz-transform: translate(100px,-30px) scale(1.5) rotate(23deg) skew(20deg, 142deg)
+   transform: translate(100px,-30px) scale(1.5) rotate(23deg) skew(20deg, 142deg)
+}
+          </code></pre>
+          <strong>scale, translate, rotate, skew, matrix</strong>
+          </section>
+          <section>
+            <h2 id="transform_title_3d_example">3d</h2>
+            <div style="width: 250px; height:250px; border: 1px solid #eee; margin: 0 auto;">
+              <div id="transform_box_3d_example">
+              
+              </div>
+            </div>
+            <pre><code>
+#transform_box_3d_example {
+   background-color: red;
+   -webkit-transform: rotatey(-45deg);
+   -moz-transform: rotatey(-45deg);
+   transform: rotatey(-45deg);
+}
+          </code></pre>
+          <strong>scale3d, rotate3d, translate3d, matrix3d</strong>
+          </section>
+          <section>
+            <h2>USE YOUR IMAGINATION</h2>
+          </section>
+        </section>
+        <section>
+          <section><h2 id="transition_title_example">transition</h2></section>
+          <section>
+            <h3>Who? When? How? Duration? Result?</h3>
+            <pre><code>
+#transition_title_example {
+  transition-property: transform; // Who ?
+  transition-delay: 0; // When ?
+  transition-timing-function: ease; // How ?
+  transition-duration: 2s; // Duration ?
+
+  transion: all 2s; // Short hand
+}
+
+#transition_title_example:hover {
+   transform: rotatey(-45deg) rotateX(35deg) rotateZ(-10deg) scale(1.5);  
+}
+            </code></pre>
+          </section>
+          <section><h2>more</h2></section>
+          <section>
+            <h2>USE YOUR IMAGINATION</h2>
+          </section>
+        </section>
+        <section>
+          <section><h2 id="animation_title_example">animation</h2></section>
+          <section>
+            <h2>or like this?</h2>
+            <div class="animation-container">
+              <div id="animation_move_example"><img src="../img/wangyan/avatar.jpg"></div>
+            </div>
+          </section>
+          <section>
+            <h3>@keyframes</h3>
+            <pre><code>
+@keyframes move {
+  from {...} // define start state
+  to {...} // define end state
+  // or
+  0%   { left:0px; top:0px; }
+  25%  { left:450px; top:0px; }
+  50%  { left:450px; top:450px; }
+  75%  { left:0px; top:450px; }
+  100% { left:0px; top:0px; }
+}
+            </code></pre>
+          </section>
+          <section>
+            <h2>Let's move</h2>
+            <pre><code>
+#example {
+  animation-name: move; //@keyframes name
+  animation-duration: 5s; // duration
+  animation-timing-function: linear; // Speed 
+  animation-delay: 2s; // when to start ?
+  animation-iteration-count: infinite; // how many times ?
+  animation-direction: alternate; // direction: normal, reverse, alternate
+  animation-play-state: running; // state: running or pause
+  
+  animation: move 5s linear 2s infinite alternate; // shorthand
+}            
+            </code></pre>
+          </section>
+          <section>
+            <h2>USE YOUR IMAGINATION</h2>
+          </section>
+        </section>
+        <section>
+          <section><h2>Other Things</h2></section>
+          <section>
+              <h3>Color</h3>
+              <h3>Multiple Columns</h3>
+              <h3>User Interface</h3>
+          </section>
+        </section>
+        <section>
+          <h2>Can I Use ?</h2>
+        </section>
+        <section>
+          <h2>Use Your Imagination</h2>
+        </section>
       </div>
     </div>
     <script src="../lib/js/head.min.js"></script>
     <script src="../js/reveal.js"></script>
+    <script src="../js/wangyan/spotlight.js"></script>
     <script>
 
       // Full list of configuration options available here:
