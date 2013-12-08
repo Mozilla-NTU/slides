@@ -16,10 +16,10 @@
         <section>
           <h2>Numbers</h2>
           Numbers in JavaScript are IEEE-754 double pricision format.
-          <img src="http://chortle.ccsu.edu/AssemblyTutorial/Chapter-30/IEEE754.jpg"/>
-          <small>http://chortle.ccsu.edu/AssemblyTutorial/Chapter-30/IEEE754.jpg</small>
+          <img src="http://upload.wikimedia.org/wikipedia/commons/a/a9/IEEE_754_Double_Floating_Point_Format.svg"/>
+          <small>http://upload.wikimedia.org/wikipedia/commons/a/a9/IEEE_754_Double_Floating_Point_Format.svg</small>
           <br/>
-          +/- 2^53 maximum int value.
+          +/- (2^53 - 1) maximum int value.
           <pre>
             Math.pow(2, 53) === Math.pow(2, 53) + 1; // true
           </pre>
@@ -68,6 +68,12 @@
             };
             nick.name; // "Nick"
             nick["age"]; // 23
+
+            // new properties can be added...
+            nick.favoriteBand = "Iron Maiden";
+
+            // and deleted
+            delete nick.age;
           </pre>
           JavaScript Object Notation (JSON)
           <pre>
@@ -119,6 +125,35 @@
           </pre>
         </section>
         <section>
+          <h2>Closures</h2>
+          Closures are functions that capture their surrounding context (scope).
+          <pre>
+            var hello = "hello";
+
+            function sayHello () {
+              // Notice that hello is not defined within this function.
+              return hello;
+            };
+
+            sayHello(); // "hello"
+          </pre>
+          sayHello is a closure.  It "closes over" the variable hello.
+        </section>
+        <section>
+          <h2>Closures</h2>
+          Returning a closure.
+          <pre>
+            function add (addend1) {
+              return function (added2) {
+                return addend1 + addend2;
+              };
+            }
+
+            var addTwo = add(2);
+            addTwo(12); // 14
+          </pre>
+        </section>
+        <section>
           <h2>Dynamically Typed</h2>
           Values have types, not variables.
           <pre>
@@ -145,8 +180,22 @@
           triple equals, generally.
         </section>
         <section>
+          <h2>Function Scoping</h2>
+          JavaScript is (unfortunately) function scoped, not block scoped.
+          <pre>
+            for (var i = 0; i &lt; 10; ++i);
+            i; // 10
+
+            (function () {
+              for (var j = 0; j &lt; 10; ++j);
+            })();
+            j; // undefined
+          </pre>
+        </section>
+        <section>
           <h2>this (context)</h2>
-          this is a variable that refers to a particular execution context.
+          this is a variable that refers to a particular execution context
+          (scope).
         </section>
         <section>
           <h2>window</h2>
@@ -172,9 +221,80 @@
             pet.name; // "Winston"
           </pre>
         </section>
-        <section><h2>Scoping</h2></section>
-        <section><h2>Prototypical Inheritence</h2></section>
-        <section><h2></h2></section>
+        <section>
+          <h2>Prototypical Inheritence</h2>
+          Objects can inherit from <i>instances</i> of other objects.
+          <pre>
+            function Vehicle (numWheels) {
+              this.numWheels = numWheels;
+            };
+
+            function Car (make, model, color) {
+              this.make = make;
+              this.model = model;
+              this.color = color;
+            };
+
+            // Car instances will inherit from one vehicle instance.
+            Car.prototype = new Vehicle(4);
+
+            var myCar = new Car("Porsche", "911 Turbo", "red"); // I wish...
+            myCar.numWheels; // 4
+
+            myCar.hasOwnProperty("make"); // true
+            myCar.hasOwnProperty("numWheels"); // false
+            myCar.hasOwnProperty("hasOwnProperty"); // false
+          </pre>
+        </section>
+        <section>
+          <h2>Traversing the Prototype Chain</h2>
+          <img src="../images/prototype_chain.jpg"/>
+          <p>Green is for instance properties.</p>
+        </section>
+        <section>
+          <h2>Instance Methods</h2>
+          <pre>
+            function Dog (name) {
+              this.name = name;
+              this.bark = function () {
+                console.log(this.name + " barks!");
+              };
+            };
+
+            var doggie = new Dog("Winston");
+            doggie.bark(); // "Winston barks!"
+
+            var other = new Dog("Professor Barksalot");
+            other.bark(); // "Professor Barksalot barks!"
+          </pre>
+          This works, but we are creating a new function object (this.bark) for
+          every instance of a Dog created.
+        </section>
+        <section>
+          <h2>Instance Methods</h2>
+          <pre>
+            function Dog (name) {
+              this.name = name;
+            };
+
+            Dog.prototype.bark = function () {
+              console.log(this.name + " barks!");
+            };
+
+            var doggie = new Dog("Winston");
+            doggie.bark(); // "Winston barks!"
+
+            var other = new Dog("Professor Barksalot");
+            other.bark(); // "Professor Barksalot barks!"
+          </pre>
+          This works and every instance of Dog shares the same function object
+          (this.bark) for each instance.  Reduces memory, but traversing
+          prototype chains is not free.
+        </section>
+        <section><h2>call, apply, bind</h2></section>
+        <section><h2>DOM</h2></section>
+        <section><h2>ASI and variable hoisting</h2></section>
+        <section><h2>Feature Detection</h2></section>
       </div>
     </div>
     <script src="../lib/js/head.min.js"></script>
