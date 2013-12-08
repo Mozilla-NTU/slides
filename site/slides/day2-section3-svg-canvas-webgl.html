@@ -30,7 +30,7 @@
         <section>
           <h2>Benefits</h2>
           Easy to scale image.  Data stored in XML derivative can be searched,
-          indexed, or scripted.  Reference based graphics.
+          indexed, or scripted.  Retained mode graphics.
         </section>
         <section>
           <h2>Scaling</h2>
@@ -74,6 +74,7 @@
         </section>
         <section>
           <h2>Canvas (Two Dimensional Context)</h2>
+          Imediate mode graphics.
           <a href="https://github.com/nickdesaulniers/canvas2dcontext/tree/master/examples">Detour</a>
         </section>
         <section>
@@ -92,6 +93,112 @@
           </p>
           <img src="http://devfiles.myopera.com/articles/8442/pipeline.jpg"/>
           <small>http://devfiles.myopera.com/articles/8442/pipeline.jpg</small>
+        </section>
+        <section>
+          <h2>How much work does it take to draw a triangle?</h2>
+          <canvas id="glTriangle" width="600px" height="400px" style="border: 1px solid red;"></canvas>
+            <script>
+              function createShader (gl, str, type) {
+                if (arguments.length !== 3) throw new Error("createShader needs 3 args");
+                var shader = gl.createShader(type);
+                gl.shaderSource(shader, str);
+                gl.compileShader(shader);
+
+                if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+                  throw new Error(gl.getShaderInfoLog(shader));
+                }
+                return shader;
+              };
+
+              function createProgram (gl, vstr, fstr) {
+                var program = gl.createProgram();
+                gl.attachShader(program, createShader(gl, vstr, gl.VERTEX_SHADER));
+                gl.attachShader(program, createShader(gl, fstr, gl.FRAGMENT_SHADER));
+                gl.linkProgram(program);
+                if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+                  alert("link error: \n" + JSON.stringify(gl.getProgramInfoLog(program)));
+                }
+                return program;
+              };
+              var ctx = document.getElementById("glTriangle").getContext("webgl");
+              ctx.bindBuffer(ctx.ARRAY_BUFFER, ctx.createBuffer());
+              ctx.bufferData(ctx.ARRAY_BUFFER, new Float32Array([
+                -0.5, -0.5,
+                 0.5, -0.5,
+                 0.0,  0.5
+              ]), ctx.STATIC_DRAW);
+              var program = createProgram(
+                ctx,
+                "attribute vec2 pos; void main () { gl_Position = vec4(pos, 0, 1); }",
+                "precision mediump float; void main () { gl_FragColor = vec4(0.3, 0.8, 0.6, 1); }"
+              );
+              ctx.useProgram(program);
+              var pos = ctx.getAttribLocation(program, "pos");
+              ctx.enableVertexAttribArray(pos);
+              // 2 points per vertex (x, y)
+              // float
+              // normalized (false)
+              // stride (0)
+              // offset (0)
+              ctx.vertexAttribPointer(program.vertexPosAttrib, 2, ctx.FLOAT, false, 0, 0);
+              // mode, first, count (3 points)
+              ctx.drawArrays(ctx.TRIANGLES, 0, 3);
+            </script>
+          </section>
+          <section>
+            <pre style="font-size: 10px;">
+              function createShader (gl, str, type) {
+                if (arguments.length !== 3) throw new Error("createShader needs 3 args");
+                var shader = gl.createShader(type);
+                gl.shaderSource(shader, str);
+                gl.compileShader(shader);
+
+                if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+                  throw new Error(gl.getShaderInfoLog(shader));
+                }
+                return shader;
+              };
+
+              function createProgram (gl, vstr, fstr) {
+                var program = gl.createProgram();
+                gl.attachShader(program, createShader(gl, vstr, gl.VERTEX_SHADER));
+                gl.attachShader(program, createShader(gl, fstr, gl.FRAGMENT_SHADER));
+                gl.linkProgram(program);
+                if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+                  alert("link error: \n" + JSON.stringify(gl.getProgramInfoLog(program)));
+                }
+                return program;
+              };
+
+              var ctx = document.getElementById("glTriangle").getContext("webgl");
+              ctx.bindBuffer(ctx.ARRAY_BUFFER, ctx.createBuffer());
+              ctx.bufferData(ctx.ARRAY_BUFFER, new Float32Array([
+                -0.5, -0.5,
+                 0.5, -0.5,
+                 0.0,  0.5
+              ]), ctx.STATIC_DRAW);
+              var program = createProgram(
+                ctx,
+                "attribute vec2 pos; void main () { gl_Position = vec4(pos, 0, 1); }",
+                "precision mediump float; void main () { gl_FragColor = vec4(0.3, 0.8, 0.6, 1); }"
+              );
+              ctx.useProgram(program);
+              var pos = ctx.getAttribLocation(program, "pos");
+              ctx.enableVertexAttribArray(pos);
+              // 2 points per vertex (x, y)
+              // float
+              // normalized (false)
+              // stride (0)
+              // offset (0)
+              ctx.vertexAttribPointer(program.vertexPosAttrib, 2, ctx.FLOAT, false, 0, 0);
+              // mode, first, count (3 points)
+              ctx.drawArrays(ctx.TRIANGLES, 0, 3);
+            </pre>
+        </section>
+        <section>
+          <h2>WebGL Demos</h2>
+          <a href="http://kripken.github.io/boon/screens/">Banabread</a>
+          <a href="http://www.unrealengine.com/html5/">Epic Citadel</a>
         </section>
       </div>
     </div>
