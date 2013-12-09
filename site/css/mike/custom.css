@@ -1,0 +1,19 @@
+.reveal .slides section img.bullet-image {
+  float: left;
+  border: none;
+  background: none;
+  width: 25%;
+  position: relative;
+  left: 2%;
+  box-shadow: none;
+}
+
+.reveal .slides section > ul,
+.reveal .slides section > ol {
+  margin-top: 3%;
+}
+
+.reveal .slides section > ul ul,
+.reveal .slides section > ol ul {
+  list-style-type: none;
+}
