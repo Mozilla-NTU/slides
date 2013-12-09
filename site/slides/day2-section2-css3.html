@@ -12,7 +12,7 @@
   <body>
     <div class="reveal">
       <div class="slides">
-        <section>
+        <section id="section-css3">
           <div id="text-shadow-box">
               <div class="wall">
                   <p id="tsb-text" style="text-shadow: black 135px -243px 65.59640276132981px;">CSS3</p>
@@ -75,9 +75,9 @@ h1 {...}
   p:before p:after</code></pre></dd>
               </dl>              
                 <dt>Combinators</dt>
-<dd><pre><code>  ul > li // Child Selector
-  h1 + p  // Adjacent Selector
-  h2 ～ p //  General Sibling
+<dd><pre><code>  ul > li /* Child Selector */
+  h1 + p  /* Adjacent Selector */
+  h2 ～ p /*  General Sibling */
 </code></pre></dd>
             </div>
           </section>
@@ -86,8 +86,8 @@ h1 {...}
           <section><h2>border</h2></section>
           <section>
           <h2>border-radius</h2>
-          <img src="../img/wangyan/avatar.jpg" class="border-example">
-          <pre><code>img {border-radius: 280px;} // same as width will be a circle</code></pre>
+          <img src="../img/wangyan/avatar.jpg" style="border-radius: 200px;">
+          <pre><code>img {border-radius: 200px;} /* same as width will be a circle */</code></pre>
           </section>
         </section>
         <section>
@@ -95,16 +95,16 @@ h1 {...}
           <section>
           <h2>That's Easy ...</h2>
           <pre><code>
-background:url(tree.gif),url(flwr.gif);// multiple background images
-background-size:cover;//specify size of background images
-background-origin:content-box;//defines positioning area of background
+background:url(tree.gif),url(flwr.gif);/* multiple background images */
+background-size:cover; /* specify size of background images */
+background-origin:content-box; /* defines positioning area of background */
           </code></pre></section>
         </section>
         <section>
           <section>
           <h2 style="text-shadow: 0px 90px 10px orange;">Text Shadow</h2><br><br>
             <pre><code>
-// text-shadow: h-shadow v-shadow  blur color;
+/* text-shadow: h-shadow v-shadow  blur color; */
    text-shadow: 0px       90px     10px orange;
             </code></pre>
           </section>
@@ -112,7 +112,7 @@ background-origin:content-box;//defines positioning area of background
 
         <section>
           <h2 id="fonts_example">Fonts</h2>
-          <pre><code>// wow! it looks like a function !
+          <pre><code>/* wow! it looks like a function ! */
 @font-face {
   font-family: myFont;
   src: url(Motscroizes-Regular.ttf);
@@ -129,7 +129,7 @@ background-origin:content-box;//defines positioning area of background
           <section>
             <h2>Linear Gradients</h2>
             <h2 id="linear-gradient-example"></h2>
-            <pre><code>// linear-gradient(direction, color-stop1, color-stop2, ...);
+            <pre><code>/* linear-gradient(direction, color-stop1, color-stop2, ...); */
 #linear-gradient-example {
   background: -webkit-linear-gradient(left,red,orange,yellow,green,blue,indigo,violet);
   background: -o-linear-gradient(left,red,orange,yellow,green,blue,indigo,violet);
@@ -140,7 +140,7 @@ background-origin:content-box;//defines positioning area of background
           <section>
             <h2>Radial Gradients</h2>
             <div id="radial-gradient-example"></div>
-            <pre><code>// radial-gradient(center, shape size,color-stop1, color-stop2, ...);
+            <pre><code>/* radial-gradient(center, shape size,color-stop1, color-stop2, ...); */
 #radial-gradient-example {
   background: -webkit-radial-gradient(center,closest-side,red,orange,...);
   background: -o-radial-gradient(center,closest-side,red,orange,...);
@@ -168,9 +168,7 @@ background-origin:content-box;//defines positioning area of background
           <section>
             <h2 id="transform_title_3d_example">3d</h2>
             <div style="width: 250px; height:250px; border: 1px solid #eee; margin: 0 auto;">
-              <div id="transform_box_3d_example">
-              
-              </div>
+              <div id="transform_box_3d_example"></div>
             </div>
             <pre><code>
 #transform_box_3d_example {
@@ -192,12 +190,12 @@ background-origin:content-box;//defines positioning area of background
             <h3>Who? When? How? Duration? Result?</h3>
             <pre><code>
 #transition_title_example {
-  transition-property: transform; // Who ?
-  transition-delay: 0; // When ?
-  transition-timing-function: ease; // How ?
-  transition-duration: 2s; // Duration ?
+  transition-property: transform; /* Who ? */
+  transition-delay: 0; /* When ? */
+  transition-timing-function: ease; /* How ? */
+  transition-duration: 2s; /* Duration ? */
 
-  transion: all 2s; // Short hand
+  transion: all 2s; /* Short hand */
 }
 
 #transition_title_example:hover {
@@ -222,9 +220,9 @@ background-origin:content-box;//defines positioning area of background
             <h3>@keyframes</h3>
             <pre><code>
 @keyframes move {
-  from {...} // define start state
-  to {...} // define end state
-  // or
+  from {...} /* define start state */
+  to {...} /* define end state */
+  /* or */
   0%   { left:0px; top:0px; }
   25%  { left:450px; top:0px; }
   50%  { left:450px; top:450px; }
@@ -237,15 +235,15 @@ background-origin:content-box;//defines positioning area of background
             <h2>Let's move</h2>
             <pre><code>
 #example {
-  animation-name: move; //@keyframes name
-  animation-duration: 5s; // duration
-  animation-timing-function: linear; // Speed 
-  animation-delay: 2s; // when to start ?
-  animation-iteration-count: infinite; // how many times ?
-  animation-direction: alternate; // direction: normal, reverse, alternate
-  animation-play-state: running; // state: running or pause
+  animation-name: move; /* @keyframes name */
+  animation-duration: 5s; /* duration */
+  animation-timing-function: linear; /* Speed */
+  animation-delay: 2s; /* when to start ? */
+  animation-iteration-count: infinite; /* how many times ? */
+  animation-direction: alternate; /* direction: normal, reverse, alternate */
+  animation-play-state: running; /* state: running or pause */
   
-  animation: move 5s linear 2s infinite alternate; // shorthand
+  animation: move 5s linear 2s infinite alternate; /* shorthand */
 }            
             </code></pre>
           </section>
