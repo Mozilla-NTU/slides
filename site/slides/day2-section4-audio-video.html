@@ -3,8 +3,9 @@
   <head>
     <meta charset="utf-8">
     <title>Template</title>
-    <link rel="stylesheet" href="../css/reveal.css">
-    <link rel="stylesheet" href="../css/theme/default.css" id="theme">
+    <link rel="stylesheet" href="../css/reveal.css"/>
+    <link rel="stylesheet" href="../css/theme/default.css" id="theme"/>
+    <link rel="stylesheet" href="../lib/css/zenburn.css"/>
   </head>
   <body>
     <div class="reveal">
@@ -85,25 +86,26 @@
           <h2>Source tags</h2>
           Both &lt;audio&gt; and &lt;video&gt; tags support nested
           &lt;source&gt; tags of different encodings.
-          <pre>
+          <pre><code>
             &lt;audio controls&gt;
               &lt;source src="foo.ogg" type="audio/ogg"/&gt;
               &lt;source src="foo.mp3" type="audio/mp3"/&gt;
               Sorry, you're browser doesn't support ogg or mp3 codecs
               (or possibly audio tags).
             &lt;/audio&gt;
-          </pre>
+          </code></pre>
         </section>
         <section>
           <h2>Feature Detecting Codec Support</h2>
-          <pre>
+          <pre><code>
             function canPlayOgg () {
               var a = document.createElement('audio');
-              return !!(a.canPlayType &amp;&amp; a.canPlayType('audio/mpeg;').replace(/no/, ''));
+              return !!(a.canPlayType &amp;&amp;
+                        a.canPlayType('audio/mpeg;').replace(/no/, ''));
             };
 
             canPlayOgg(); // true or false
-          </pre>
+          </code></pre>
           <a href="http://diveintohtml5.info/everything.html#audio">
             More feature detection
           </a>
@@ -117,6 +119,9 @@
         controls: true,
         progress: true,
         history: true,
+        dependencies: [
+           { src: '../plugin/highlight/highlight.min.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+        ],
       });
     </script>
   </body>

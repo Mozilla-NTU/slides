@@ -3,8 +3,9 @@
   <head>
     <meta charset="utf-8">
     <title>Template</title>
-    <link rel="stylesheet" href="../css/reveal.css">
-    <link rel="stylesheet" href="../css/theme/default.css" id="theme">
+    <link rel="stylesheet" href="../css/reveal.css"/>
+    <link rel="stylesheet" href="../css/theme/default.css" id="theme"/>
+    <link rel="stylesheet" href="../lib/css/zenburn.css"/>
   </head>
   <body>
     <div class="reveal">
@@ -20,12 +21,14 @@
             <rect width="200px" height="100px" fill="blue" stroke="red"/>
             <circle cx="400px" cy="100px" r="100px" fill="green" stroke="orange"/>
           </svg>
-          <pre>
-            &lt;svg&gt;
-              &lt;rect width="200px" height="100px" fill="blue" stroke="red"/&gt;
-              &lt;circle cx="400px" cy="100px" r="100px" fill="green" stroke="orange"/&gt;
-            &lt;/svg&lt;
-          </pre>
+          <pre><code>
+              &lt;svg&gt;
+                &lt;rect width="200px" height="100px" fill="blue"
+                      stroke="red"/&gt;
+                &lt;circle cx="400px" cy="100px" r="100px" fill="green"
+                        stroke="orange"/&gt;
+              &lt;/svg&gt;
+          </code></pre>
         </section>
         <section>
           <h2>Benefits</h2>
@@ -59,7 +62,7 @@
             circle.setAttribute("cy", "50%");
             document.getElementById("slide4SVG").appendChild(circle);
           </script>
-          <pre>
+          <pre><code>
             &lt;svg id="slide4SVG"&gt;&lt;/svg&gt;
             &lt;script&gt;
               var ns = "http://www.w3.org/2000/svg";
@@ -70,7 +73,7 @@
               circle.setAttribute("cy", "50%");
               document.getElementById("slide4SVG").appendChild(circle);
             &lt;/script&gt;
-          </pre>
+          </code></pre>
         </section>
         <section>
           <h2>Canvas (Two Dimensional Context)</h2>
@@ -146,7 +149,7 @@
             </script>
           </section>
           <section>
-            <pre style="font-size: 10px;">
+            <pre style="font-size: 10px;"><code>
               function createShader (gl, str, type) {
                 if (arguments.length !== 3) throw new Error("createShader needs 3 args");
                 var shader = gl.createShader(type);
@@ -193,7 +196,7 @@
               ctx.vertexAttribPointer(program.vertexPosAttrib, 2, ctx.FLOAT, false, 0, 0);
               // mode, first, count (3 points)
               ctx.drawArrays(ctx.TRIANGLES, 0, 3);
-            </pre>
+            </code></pre>
         </section>
         <section>
           <h2>WebGL Demos</h2>
@@ -209,6 +212,9 @@
         controls: true,
         progress: true,
         history: true,
+        dependencies: [
+           { src: '../plugin/highlight/highlight.min.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+        ],
       });
     </script>
   </body>

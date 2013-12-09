@@ -3,15 +3,16 @@
   <head>
     <meta charset="utf-8">
     <title>Template</title>
-    <link rel="stylesheet" href="../css/reveal.css">
-    <link rel="stylesheet" href="../css/theme/default.css" id="theme">
+    <link rel="stylesheet" href="../css/reveal.css"/>
+    <link rel="stylesheet" href="../css/theme/default.css" id="theme"/>
+    <link rel="stylesheet" href="../lib/css/zenburn.css"/>
   </head>
   <body>
     <div class="reveal">
       <div class="slides">
         <section>
           <h1>JavaScript</h1>
-          <pre>console.log("Hello World");</pre>
+          <pre><code>console.log("Hello World");</code></pre>
         </section>
         <section>
           <h2>Numbers</h2>
@@ -20,35 +21,35 @@
           <small>http://upload.wikimedia.org/wikipedia/commons/a/a9/IEEE_754_Double_Floating_Point_Format.svg</small>
           <br/>
           +/- (2^53 - 1) maximum int value.
-          <pre>
+          <pre><code>
             Math.pow(2, 53) === Math.pow(2, 53) + 1; // true
-          </pre>
+          </code></pre>
           Infinity, -Infinity, NaN, 0, -0.
-          <pre>
+          <pre><code>
             0.1 + 0.2 === 0.3; // false
-          </pre>
+          </code></pre>
         </section>
         <section>
           <h2>Strings</h2>
-          <pre>
+          <pre><code>
             "abc" + "def"; // "abcdef"
             "hello world"[4]; // "o"
-          </pre>
+          </code></pre>
           UCS2 encoding.
         </section>
         <section>
           <h2>Dates</h2>
-          <pre>
+          <pre><code>
             Date.now(); // Milliseconds since Epoch (Jan 1 1970)
             var today = new Date();
             today.getDate();
             today.getMonth();
             today.getFullYear();
-          </pre>
+          </code></pre>
         </section>
         <section>
           <h2>Arrays</h2>
-          <pre>
+          <pre><code>
           var a = 42;
           var myArr = [a, 1, "Nick"];
           myArr[0]; // 42
@@ -56,12 +57,12 @@
           myArr.length; // 3
           myArr.length = 1; // array truncation
           console.log(myArr); // [42]
-          </pre>
+          </code></pre>
         </section>
         <section>
           <h2>Objects</h2>
           Object Literal
-          <pre>
+          <pre><code>
             var nick = {
               name: "Nick",
               age: 23
@@ -74,18 +75,18 @@
 
             // and deleted
             delete nick.age;
-          </pre>
+          </code></pre>
           JavaScript Object Notation (JSON)
-          <pre>
+          <pre><code>
           {
             "data": 12345,
             "from": "Nick"
           }
-          </pre>
+          </code></pre>
         </section>
         <section>
           <h2>Serialization</h2>
-          <pre>
+          <pre><code>
             var json = '{ "name": "Nick" }';
             try {
               var nick = JSON.parse(json);
@@ -96,38 +97,38 @@
 
             var dog = { name: "Winston", type: "Bulldog", };
             JSON.stringify(dog); // '{ "name": "Winson", "type": "Bulldog" }'
-          </pre>
+          </code></pre>
         </section>
         <section>
           <h2>undefined and null</h2>
-          <pre>
+          <pre><code>
             var a;
             a; // undefined
             var b = null;
             b; // null
-          </pre>
+          </code></pre>
           Always define variables, use null to remove reference to a variable.
-          <pre>
+          <pre><code>
             var a = 5;
             // process a
             a = null; // a no longer needed
-          </pre>
+          </code></pre>
           Functions with no return value return undefined, and parameters not
           passed are also undefined.
         </section>
         <section>
           <h2>Regular Expressions</h2>
           Describe state machines useful for pattern matching.
-          <pre>
+          <pre><code>
             var re = /firefox/;
             re.test("hello firefox, how are you?"); // true
             "a1bb22ccc333dddd4444".match(/[0-9]{3}[a-z]{3}/)[0]; // "333ddd"
-          </pre>
+          </code></pre>
           A quick reference is helpful in writing "regexes."
         </section>
         <section>
           <h2>Functions</h2>
-          <pre>
+          <pre><code>
             // named function
             function addTwo (num) {
               return num + 2;
@@ -137,12 +138,12 @@
               return num + 3;
             };
             addThree(addTwo(1)); // 6
-          </pre>
+          </code></pre>
         </section>
         <section>
           <h2>Closures</h2>
           Closures are functions that capture their surrounding context (scope).
-          <pre>
+          <pre><code>
             var hello = "hello";
 
             function sayHello () {
@@ -151,13 +152,13 @@
             };
 
             sayHello(); // "hello"
-          </pre>
+          </code></pre>
           sayHello is a closure.  It "closes over" the variable hello.
         </section>
         <section>
           <h2>Closures</h2>
           Returning a closure.
-          <pre>
+          <pre><code>
             function add (addend1) {
               return function (added2) {
                 return addend1 + addend2;
@@ -166,38 +167,38 @@
 
             var addTwo = add(2);
             addTwo(12); // 14
-          </pre>
+          </code></pre>
         </section>
         <section>
           <h2>Dynamically Typed</h2>
           Values have types, not variables.
-          <pre>
+          <pre><code>
             var a = 5;
             typeof a; // "number"
             a = "nick";
             typeof a; // "string"
-          </pre>
+          </code></pre>
           You may reassign variables values of different types.
         </section>
         <section>
           <h2>Loosely Typed</h2>
           Values can be coerced (casted) from one type to another based on
           operator.
-          <pre>
+          <pre><code>
             1 + 2; // 3
             "1" + "2"; // "12"
             1 + "2"; // "12"
             "1" + 2; // "12"
             1 == "1" // true
             1 === "1" // false
-          </pre>
+          </code></pre>
           Double equals operator, ==, can be the source of many bugs.  Use
           triple equals, generally.
         </section>
         <section>
           <h2>Function Scoping</h2>
           JavaScript is (unfortunately) function scoped, not block scoped.
-          <pre>
+          <pre><code>
             for (var i = 0; i &lt; 10; ++i);
             i; // 10
 
@@ -205,7 +206,7 @@
               for (var j = 0; j &lt; 10; ++j);
             })();
             j; // undefined
-          </pre>
+          </code></pre>
         </section>
         <section>
           <h2>this (context)</h2>
@@ -215,7 +216,7 @@
         <section>
           <h2>window</h2>
           window refers to the global context.
-          <pre>
+          <pre><code>
             var a = 5;
             console.log(a); // 5
             window.console.log(a); // 5
@@ -223,23 +224,23 @@
             this.a; // 5
             this === window; // true
             (function context () { return this; })() === window; // true
-          </pre>
+          </code></pre>
         </section>
         <section>
           <h2>Constuctors</h2>
-          <pre>
+          <pre><code>
             function Dog (name, kind) {
               this.name = name;
               this.kind = kind;
             };
             var pet = new Dog("Winston", "English Bulldog");
             pet.name; // "Winston"
-          </pre>
+          </code></pre>
         </section>
         <section>
           <h2>Prototypical Inheritence</h2>
           Objects can inherit from <i>instances</i> of other objects.
-          <pre>
+          <pre><code>
             function Vehicle (numWheels) {
               this.numWheels = numWheels;
             };
@@ -259,7 +260,7 @@
             myCar.hasOwnProperty("make"); // true
             myCar.hasOwnProperty("numWheels"); // false
             myCar.hasOwnProperty("hasOwnProperty"); // false
-          </pre>
+          </code></pre>
         </section>
         <section>
           <h2>Traversing the Prototype Chain</h2>
@@ -268,7 +269,7 @@
         </section>
         <section>
           <h2>Instance Methods</h2>
-          <pre>
+          <pre><code>
             function Dog (name) {
               this.name = name;
               this.bark = function () {
@@ -281,13 +282,13 @@
 
             var other = new Dog("Professor Barksalot");
             other.bark(); // "Professor Barksalot barks!"
-          </pre>
+          </code></pre>
           This works, but we are creating a new function object (this.bark) for
           every instance of a Dog created.
         </section>
         <section>
           <h2>Instance Methods</h2>
-          <pre>
+          <pre><code>
             function Dog (name) {
               this.name = name;
             };
@@ -301,13 +302,13 @@
 
             var other = new Dog("Professor Barksalot");
             other.bark(); // "Professor Barksalot barks!"
-          </pre>
+          </code></pre>
           This works and every instance of Dog shares the same function object
           (this.bark) for each instance.  Reduces memory, but traversing
           prototype chains is not free.
         </section>
         <section>
-          <pre>
+          <pre><code>
             function Dog (name) {
               this.name = name;
             };
@@ -325,7 +326,7 @@
 
             doggie.bark(); // "Winston wonders 'What does the fox say?'"
             other.bark(); // "Professor Barksalot barks!"
-          </pre>
+          </code></pre>
           Here, we're not touching the shared prototype object.  Instead, we're
           assigning a single instance of Dog a new bark property.  Calling bark
           on doggie does not traverse the prototype chain.  Calling bark on
@@ -333,7 +334,7 @@
         </section>
         <section>
           <h2>Changing this</h2>
-          <pre>
+          <pre><code>
             function Dog (name) {
               this.name = name;
             };
@@ -347,11 +348,11 @@
             var dog = new Dog("Winston");
             dog.bark.bind("Professor Barksalot")(); // "Professor Barksalot barks!"
             dog.name; // "Winston"
-          </pre>
+          </code></pre>
         </section>
         <section>
           <h2>Variadic Functions</h2>
-          <pre>
+          <pre><code>
             function printArgs() {
               for (var i = 0; i &lt; arguments.length; ++i) {
                 console.log(arguments[i]);
@@ -361,7 +362,7 @@
             printArgs(1, 2, 3); // 1, 2, 3
             printArgs.call(null, 1, 2, 3); // 1, 2, 3
             printArgs.apply(null, [1, 2, 3]); // 1, 2, 3
-          </pre>
+          </code></pre>
           <p>
             Function.prototype.call is itself variadic.  So is
             Function.prototype.bind.
@@ -374,17 +375,17 @@
         </section>
         <section>
           <h2>Finding Nodes</h2>
-          <pre>
+          <pre><code>
             document.getElementById("myId");
             document.getElementsByClassName("odd");
             document.getElementsByTagName("a");
             document.querySelector("#myId a.odd");
             document.querySelectorAll("a.odd");
-          </pre>
+          </code></pre>
         </section>
         <section>
           <h2>Traversing Nodes</h2>
-          <pre>
+          <pre><code>
             var ele = document.getElementById("addNode");
             ele.parentNode;
             ele.childNodes;
@@ -395,7 +396,7 @@
                 return child !== ele;
               }
             );
-          </pre>
+          </code></pre>
           NodeList and HTMLCollection objects aren't JavaScript Array objects,
           but they have a length property which Array.prototype.filter needs,
           so we can use call to change this.  arguments is also not a JavaScript
@@ -403,7 +404,7 @@
         </section>
         <section>
           <h2>Creating New Nodes</h2>
-          <pre>
+          <pre><code>
             &lt;div id="addNode"&gt;&lt;/div&gt;
             &lt;script>
               var target = document.getElementById("addNode");
@@ -411,7 +412,7 @@
               p.textContent = "Hello World!";
               target.appendChild(p);
             &lt;/script&gt;
-          </pre>
+          </code></pre>
           <div id="addNode"></div>
           <script>
             var target = document.getElementById("addNode");
@@ -422,13 +423,13 @@
         </section>
         <section>
           <h2>Removing Nodes</h2>
-          <pre>
+          <pre><code>
             &lt;div id="removeNode"&gt;Remove me&lt;/div&gt;
             &lt;script&gt;
               var target = document.getElementById("removeNode");
               target.parentNode.removeChild(target);
             &lt;/script&gt;
-          </pre>
+          </code></pre>
           <div id="removeNode">Remove me</div>
           <script>
             var target = document.getElementById("removeNode");
@@ -437,7 +438,7 @@
         </section>
         <section>
           <h2>Dynamic HTML</h2>
-          <pre>
+          <pre><code>
             &lt;p id="dhtml"&gt;Hello World!&lt;/p&gt;
             &lt;script&gt;
               var target = document.getElementById("dhtml");
@@ -446,7 +447,7 @@
               target.style.textShadow = "0px 90px 10px orange";
               target.style.transform = "rotateY(-45deg) rotateX(35deg) rotateZ(-10deg)";
             &lt;/script&gt;
-          </pre>
+          </code></pre>
           <p id="dhtml">Hello World!</p>
           <script>
             var target = document.getElementById("dhtml");
@@ -458,28 +459,29 @@
         </section>
         <section>
           <h2>Attributes</h2>
-          <pre>
+          <pre><code>
             myEle.setAttribute("id", "myEle");
             myEle.getAttribute("id"); // "myEle"
-          </pre>
+          </code></pre>
         </section>
         <section>
           <h2>ClassList and DataList</h2>
-          <pre>
+          <pre><code>
             &lt;p class="hello world" data-whatever="foo" &gt;&lt;/p&gt;
+            &lt;script&gt;
+              p.classList.add("bar");
+              p.classList.remove("hello");
+              p.classList.toString(); // "world bar"
 
-            p.classList.add("bar");
-            p.classList.remove("hello");
-            p.classList.toString(); // "world bar"
-
-            p.dataset.whatever; // "foo"
-            p.dataset.hello = "nick";
-            p.getAttribute("data-hello"); // "nick"
-          </pre>
+              p.dataset.whatever; // "foo"
+              p.dataset.hello = "nick";
+              p.getAttribute("data-hello"); // "nick"
+            &lt;/script&gt;
+          </code></pre>
         </section>
         <section>
           <h2>Feature Detection</h2>
-          <pre>
+          <pre><code>
             if (!Array.prototype.forEach) {
               Array.prototype.forEach = function (callback, thisArg) {
                 if (this === null) {
@@ -495,7 +497,7 @@
                 }
               };
             }
-          </pre>
+          </code></pre>
           Function.prototype.forEach is available everywhere except pre IE9.
         </section>
       </div>
@@ -507,6 +509,9 @@
         controls: true,
         progress: true,
         history: true,
+        dependencies: [
+           { src: '../plugin/highlight/highlight.min.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+        ],
       });
     </script>
   </body>
