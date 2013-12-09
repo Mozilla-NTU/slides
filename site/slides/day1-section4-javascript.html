@@ -16,10 +16,10 @@
         <section>
           <h2>Numbers</h2>
           Numbers in JavaScript are IEEE-754 double pricision format.
-          <img src="http://chortle.ccsu.edu/AssemblyTutorial/Chapter-30/IEEE754.jpg"/>
-          <small>http://chortle.ccsu.edu/AssemblyTutorial/Chapter-30/IEEE754.jpg</small>
+          <img src="http://upload.wikimedia.org/wikipedia/commons/a/a9/IEEE_754_Double_Floating_Point_Format.svg"/>
+          <small>http://upload.wikimedia.org/wikipedia/commons/a/a9/IEEE_754_Double_Floating_Point_Format.svg</small>
           <br/>
-          +/- 2^53 maximum int value.
+          +/- (2^53 - 1) maximum int value.
           <pre>
             Math.pow(2, 53) === Math.pow(2, 53) + 1; // true
           </pre>
@@ -68,6 +68,12 @@
             };
             nick.name; // "Nick"
             nick["age"]; // 23
+
+            // new properties can be added...
+            nick.favoriteBand = "Iron Maiden";
+
+            // and deleted
+            delete nick.age;
           </pre>
           JavaScript Object Notation (JSON)
           <pre>
@@ -75,6 +81,21 @@
             "data": 12345,
             "from": "Nick"
           }
+          </pre>
+        </section>
+        <section>
+          <h2>Serialization</h2>
+          <pre>
+            var json = '{ "name": "Nick" }';
+            try {
+              var nick = JSON.parse(json);
+              nick.name; // "Nick"
+            } catch (e) {
+              console.error(e);
+            }
+
+            var dog = { name: "Winston", type: "Bulldog", };
+            JSON.stringify(dog); // '{ "name": "Winson", "type": "Bulldog" }'
           </pre>
         </section>
         <section>
@@ -119,6 +140,35 @@
           </pre>
         </section>
         <section>
+          <h2>Closures</h2>
+          Closures are functions that capture their surrounding context (scope).
+          <pre>
+            var hello = "hello";
+
+            function sayHello () {
+              // Notice that hello is not defined within this function.
+              return hello;
+            };
+
+            sayHello(); // "hello"
+          </pre>
+          sayHello is a closure.  It "closes over" the variable hello.
+        </section>
+        <section>
+          <h2>Closures</h2>
+          Returning a closure.
+          <pre>
+            function add (addend1) {
+              return function (added2) {
+                return addend1 + addend2;
+              };
+            }
+
+            var addTwo = add(2);
+            addTwo(12); // 14
+          </pre>
+        </section>
+        <section>
           <h2>Dynamically Typed</h2>
           Values have types, not variables.
           <pre>
@@ -145,8 +195,22 @@
           triple equals, generally.
         </section>
         <section>
+          <h2>Function Scoping</h2>
+          JavaScript is (unfortunately) function scoped, not block scoped.
+          <pre>
+            for (var i = 0; i &lt; 10; ++i);
+            i; // 10
+
+            (function () {
+              for (var j = 0; j &lt; 10; ++j);
+            })();
+            j; // undefined
+          </pre>
+        </section>
+        <section>
           <h2>this (context)</h2>
-          this is a variable that refers to a particular execution context.
+          this is a variable that refers to a particular execution context
+          (scope).
         </section>
         <section>
           <h2>window</h2>
@@ -172,9 +236,268 @@
             pet.name; // "Winston"
           </pre>
         </section>
-        <section><h2>Scoping</h2></section>
-        <section><h2>Prototypical Inheritence</h2></section>
-        <section><h2></h2></section>
+        <section>
+          <h2>Prototypical Inheritence</h2>
+          Objects can inherit from <i>instances</i> of other objects.
+          <pre>
+            function Vehicle (numWheels) {
+              this.numWheels = numWheels;
+            };
+
+            function Car (make, model, color) {
+              this.make = make;
+              this.model = model;
+              this.color = color;
+            };
+
+            // Car instances will inherit from one vehicle instance.
+            Car.prototype = new Vehicle(4);
+
+            var myCar = new Car("Porsche", "911 Turbo", "red"); // I wish...
+            myCar.numWheels; // 4
+
+            myCar.hasOwnProperty("make"); // true
+            myCar.hasOwnProperty("numWheels"); // false
+            myCar.hasOwnProperty("hasOwnProperty"); // false
+          </pre>
+        </section>
+        <section>
+          <h2>Traversing the Prototype Chain</h2>
+          <img src="../images/prototype_chain.jpg"/>
+          <p>Green is for instance properties.</p>
+        </section>
+        <section>
+          <h2>Instance Methods</h2>
+          <pre>
+            function Dog (name) {
+              this.name = name;
+              this.bark = function () {
+                console.log(this.name + " barks!");
+              };
+            };
+
+            var doggie = new Dog("Winston");
+            doggie.bark(); // "Winston barks!"
+
+            var other = new Dog("Professor Barksalot");
+            other.bark(); // "Professor Barksalot barks!"
+          </pre>
+          This works, but we are creating a new function object (this.bark) for
+          every instance of a Dog created.
+        </section>
+        <section>
+          <h2>Instance Methods</h2>
+          <pre>
+            function Dog (name) {
+              this.name = name;
+            };
+
+            Dog.prototype.bark = function () {
+              console.log(this.name + " barks!");
+            };
+
+            var doggie = new Dog("Winston");
+            doggie.bark(); // "Winston barks!"
+
+            var other = new Dog("Professor Barksalot");
+            other.bark(); // "Professor Barksalot barks!"
+          </pre>
+          This works and every instance of Dog shares the same function object
+          (this.bark) for each instance.  Reduces memory, but traversing
+          prototype chains is not free.
+        </section>
+        <section>
+          <pre>
+            function Dog (name) {
+              this.name = name;
+            };
+
+            Dog.prototype.bark = function () {
+              console.log(this.name + " barks!");
+            };
+
+            var doggie = new Dog("Winston");
+            var other = new Dog("Professor Barksalot");
+
+            doggie.bark = function () {
+              console.log(this.name + " wonders 'What does the fox say?'");
+            };
+
+            doggie.bark(); // "Winston wonders 'What does the fox say?'"
+            other.bark(); // "Professor Barksalot barks!"
+          </pre>
+          Here, we're not touching the shared prototype object.  Instead, we're
+          assigning a single instance of Dog a new bark property.  Calling bark
+          on doggie does not traverse the prototype chain.  Calling bark on
+          other does.
+        </section>
+        <section>
+          <h2>Changing this</h2>
+          <pre>
+            function Dog (name) {
+              this.name = name;
+            };
+
+            Dog.prototype.bark = function () {
+              console.log(this.name + " barks!");
+            };
+
+            Dog.prototype.bark.call("Nick"); // "Nick barks!"
+
+            var dog = new Dog("Winston");
+            dog.bark.bind("Professor Barksalot")(); // "Professor Barksalot barks!"
+            dog.name; // "Winston"
+          </pre>
+        </section>
+        <section>
+          <h2>Variadic Functions</h2>
+          <pre>
+            function printArgs() {
+              for (var i = 0; i &lt; arguments.length; ++i) {
+                console.log(arguments[i]);
+              }
+            };
+
+            printArgs(1, 2, 3); // 1, 2, 3
+            printArgs.call(null, 1, 2, 3); // 1, 2, 3
+            printArgs.apply(null, [1, 2, 3]); // 1, 2, 3
+          </pre>
+          <p>
+            Function.prototype.call is itself variadic.  So is
+            Function.prototype.bind.
+          </p>
+        </section>
+        <section>
+          <h2>DOM</h2>
+          The DOM can be thought of as a tree composed of various HTML elements
+          for the nodes.
+        </section>
+        <section>
+          <h2>Finding Nodes</h2>
+          <pre>
+            document.getElementById("myId");
+            document.getElementsByClassName("odd");
+            document.getElementsByTagName("a");
+            document.querySelector("#myId a.odd");
+            document.querySelectorAll("a.odd");
+          </pre>
+        </section>
+        <section>
+          <h2>Traversing Nodes</h2>
+          <pre>
+            var ele = document.getElementById("addNode");
+            ele.parentNode;
+            ele.childNodes;
+            ele.previousSibling;
+            ele.nextSibling;
+            var siblings = Array.prototype.filter.call(
+              ele.parentNode.childNodes, function (child) {
+                return child !== ele;
+              }
+            );
+          </pre>
+          NodeList and HTMLCollection objects aren't JavaScript Array objects,
+          but they have a length property which Array.prototype.filter needs,
+          so we can use call to change this.  arguments is also not a JavaScript
+          Array object!
+        </section>
+        <section>
+          <h2>Creating New Nodes</h2>
+          <pre>
+            &lt;div id="addNode"&gt;&lt;/div&gt;
+            &lt;script>
+              var target = document.getElementById("addNode");
+              var p = document.createElement("p");
+              p.textContent = "Hello World!";
+              target.appendChild(p);
+            &lt;/script&gt;
+          </pre>
+          <div id="addNode"></div>
+          <script>
+            var target = document.getElementById("addNode");
+            var p = document.createElement("p");
+            p.textContent = "Hello World!";
+            target.appendChild(p);
+          </script>
+        </section>
+        <section>
+          <h2>Removing Nodes</h2>
+          <pre>
+            &lt;div id="removeNode"&gt;Remove me&lt;/div&gt;
+            &lt;script&gt;
+              var target = document.getElementById("removeNode");
+              target.parentNode.removeChild(target);
+            &lt;/script&gt;
+          </pre>
+          <div id="removeNode">Remove me</div>
+          <script>
+            var target = document.getElementById("removeNode");
+            target.parentNode.removeChild(target);
+          </script>
+        </section>
+        <section>
+          <h2>Dynamic HTML</h2>
+          <pre>
+            &lt;p id="dhtml"&gt;Hello World!&lt;/p&gt;
+            &lt;script&gt;
+              var target = document.getElementById("dhtml");
+              target.style.color = "red";
+              target.style.fontSize = "40pt";
+              target.style.textShadow = "0px 90px 10px orange";
+              target.style.transform = "rotateY(-45deg) rotateX(35deg) rotateZ(-10deg)";
+            &lt;/script&gt;
+          </pre>
+          <p id="dhtml">Hello World!</p>
+          <script>
+            var target = document.getElementById("dhtml");
+            target.style.color = "red";
+            target.style.fontSize = "40pt";
+            target.style.textShadow = "0px 90px 10px orange";
+            target.style.transform = "rotateY(-45deg) rotateX(35deg) rotateZ(-10deg)";
+          </script>
+        </section>
+        <section>
+          <h2>Attributes</h2>
+          <pre>
+            myEle.setAttribute("id", "myEle");
+            myEle.getAttribute("id"); // "myEle"
+          </pre>
+        </section>
+        <section>
+          <h2>ClassList and DataList</h2>
+          <pre>
+            &lt;p class="hello world" data-whatever="foo" &gt;&lt;/p&gt;
+
+            p.classList.add("bar");
+            p.classList.remove("hello");
+            p.classList.toString(); // "world bar"
+
+            p.dataset.whatever; // "foo"
+            p.dataset.hello = "nick";
+            p.getAttribute("data-hello"); // "nick"
+          </pre>
+        </section>
+        <section>
+          <h2>Feature Detection</h2>
+          <pre>
+            if (!Array.prototype.forEach) {
+              Array.prototype.forEach = function (callback, thisArg) {
+                if (this === null) {
+                  throw new TypeError("this is null or not defined");
+                }
+
+                if (typeof callback !== "function") {
+                  return;
+                }
+
+                for (var i = 0, len = this.length; ++i) {
+                  callback.call(thisArg || null, this[i], i, this);
+                }
+              };
+            }
+          </pre>
+          Function.prototype.forEach is available everywhere except pre IE9.
+        </section>
       </div>
     </div>
     <script src="../lib/js/head.min.js"></script>
