@@ -484,8 +484,8 @@
           <pre><code>
             if (!Array.prototype.forEach) {
               Array.prototype.forEach = function (callback, thisArg) {
-                if (this === null) {
-                  throw new TypeError("this is null or not defined");
+                if (!("length" in this)) {
+                  throw new TypeError("this has no length property");
                 }
 
                 if (typeof callback !== "function") {
@@ -499,6 +499,82 @@
             }
           </code></pre>
           Function.prototype.forEach is available everywhere except pre IE9.
+        </section>
+        <section>
+          <h2>Events</h2>
+          <pre>
+            <code>
+              var hello = document.getElementById("hello");
+              hello.onclick = function (event) {
+                hello === event.target; // true
+                event.preventDefault; // don't follow links if &lt;a&gt; tag
+                console.log("hello world!");
+              };
+            </code>
+          </pre>
+          onclick assigns a single callback function.
+        </section>
+        <section>
+          <h2>Events</h2>
+          <pre>
+            <code>
+              var hello = document.getElementById("hello");
+              hello.addEventListener("click", function (event) {
+                console.log("a");
+              });
+              hello.addEventListener("click", function (event) {
+                console.log("b");
+              });
+            </code>
+          </pre>
+          addEventListener can be used to queue up multiple callback functions.
+          This example logs "a" then "b".
+        </section>
+        <section>
+          <h2>Events</h2>
+          <pre>
+            <code>
+              var hello = document.getElementById("hello");
+              hello.addEventListener("click", function once (event) {
+                hello.removeEventListener("click", once);
+                console.log("c");
+              });
+            </code>
+          </pre>
+          By using a named function instead of an anonymous function, we can
+          remove event listeners.
+        </section>
+        <section>
+          <h2>Load Events</h2>
+          Script tags can go in the &lt;head&gt; or &lt;body&gt;.  The DOM is
+          parsed sequentially, so calls to document.getElement[s]by... will
+          fail if they are in a &lt;script&gt; tag before the DOM element.
+        </section>
+        <section>
+          <pre>
+            <code>
+              &lt;-- Fails --&gt;
+              &lt;script&gt;document.getElementById("nick");&lt;/script&gt;
+              &lt;p id="nick"&gt;Hello&lt;/p&gt;
+
+              &lt;-- Succeeds --&gt;
+              &lt;p id="nick2"&gt;Hello&lt;/p&gt;
+              &lt;script&gt;document.getElementById("nick");&lt;/script&gt;
+            </code>
+          </pre>
+        </section>
+        <section>
+          <pre>
+            <code>
+              // position independent
+              document.addEventListener("DOMContentLoaded", function (e) {
+                document.getElementById("nick");
+              });
+            </code>
+          </pre>
+          Having your JavaScript depend on the positioning of the script tag
+          within the DOM is brittle.  Add event listener for DOMContentLoaded
+          or load to document.
         </section>
       </div>
     </div>
