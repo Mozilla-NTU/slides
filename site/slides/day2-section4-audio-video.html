@@ -74,13 +74,39 @@
           container, with a .m4a extension, listed in a m3u playlist file,
           served over ICY.
         </section>
-        <section><h2>Considerations</h2></section>
         <section>
           <h2>Hardware Acceleration</h2>
           Media can be decoded to PCM in software or in hardware.  Application
           Specific Integrated Circuits (ASICs) can be faster and more power
           efficient than General Purpose Processors.  Mobile friendly.  They
           can also be patent encumbered.
+        </section>
+        <section>
+          <h2>Source tags</h2>
+          Both &lt;audio&gt; and &lt;video&gt; tags support nested
+          &lt;source&gt; tags of different encodings.
+          <pre>
+            &lt;audio controls&gt;
+              &lt;source src="foo.ogg" type="audio/ogg"/&gt;
+              &lt;source src="foo.mp3" type="audio/mp3"/&gt;
+              Sorry, you're browser doesn't support ogg or mp3 codecs
+              (or possibly audio tags).
+            &lt;/audio&gt;
+          </pre>
+        </section>
+        <section>
+          <h2>Feature Detecting Codec Support</h2>
+          <pre>
+            function canPlayOgg () {
+              var a = document.createElement('audio');
+              return !!(a.canPlayType &amp;&amp; a.canPlayType('audio/mpeg;').replace(/no/, ''));
+            };
+
+            canPlayOgg(); // true or false
+          </pre>
+          <a href="http://diveintohtml5.info/everything.html#audio">
+            More feature detection
+          </a>
         </section>
       </div>
     </div>
