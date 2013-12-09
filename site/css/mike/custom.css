@@ -17,3 +17,18 @@
 .reveal .slides section > ol ul {
   list-style-type: none;
 }
+
+.avatars {
+  text-align: center;
+}
+.reveal section .avatars img {
+  margin: 0 28px;
+  width: 25%;
+  border-radius: 10px;
+}
+.avatars span {
+  margin: 0 20px;
+  text-align: center;
+  width: 28%;
+  display: inline-block;
+}
