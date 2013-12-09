@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Developer Tools</title>
+    <link rel="stylesheet" href="../css/reveal.css">
+    <link rel="stylesheet" href="../css/mike/custom.css">
+    <link rel="stylesheet" href="../css/theme/beige.css" id="theme">
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1 id="hot-tip">HOT TIP!<img class="left" src="../img/mike/Meet-the-Firefox-OS-Mascot-a-Fox-That-s-on-Fire.png" /><img class="right" src="../img/mike/Meet-the-Firefox-OS-Mascot-a-Fox-That-s-on-Fire.png" /></h1>
+          <p>Subscript to HTML5 Weekly</p>
+          <a href="http://html5weekly.com/">http://html5weekly.com/</a>
+          <p>demos, libraries, podcasts, articles</p>
+          <p>Keep up to date!</p>
+        </section>
+        <section>
+          <h2>Developer Tools</h2>
+          <img class="bullet-image" src="../img/mike/toolbox.png" />
+          <ul>
+            <li>Layout and Style</li>
+            <li>Javascript debugging</li>
+            <li>Performance monitoring</li>
+            <li>Absolutely essential</li>
+            <li>Mobile simulation</li>
+            <ul><li>without it you fly blind</li></ul>
+          </ul>
+        </section>
+        <section>
+          <h2>Page Inspector</h2>
+          <img class="bullet-image" src="../img/mike/339px-Icon-inspector.svg.png" />
+          <ul>
+            <li>View and Modify HTML</li>
+            <li>Walk the DOM</li>
+            <li>Examine Box model</li>
+            <li>Look at Fonts</li>
+            <li>Ctrl-Shift-C <br />(Cmd-Option-C on the Mac &amp; Linux)</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Web Console</h2>
+          <img class="bullet-image" src="../img/mike/terminal_flat_by_packrobottom-d6dqev2.png" />
+          <ul>
+            <li>View warnings and errors</li>
+            <ul><li>From javascript</li></ul>
+            <ul><li>From CSS</li></ul>
+            <ul><li>From network</li></ul>
+            <li>Instant REPL</li>
+            <li>Special helper commands, like help()</li>
+            <li>Control-Shift-K<br />(Command-Option-K on the Mac)</li>
+          </ul>
+          <script>
+            console.log("--------> HELLO NTU! <--------");
+            setTimeout(function() {
+              throw "YUP, I'm throwing errors";
+            }, 5000);
+          </script>
+        </section>
+        <section>
+          <h2>Javascript Debugger</h2>
+          <img class="bullet-image" src="../img/mike/no_bug.png" />
+          <ul>
+            <li>Examine Javascript code</li>
+            <li>Set breakpoints</li>
+            <li>Pause on exceptions</li>
+            <li>Pause on events (click)</li>
+            <li>Step through code</li>
+            <li>Control-Shift-S<br />
+            (Command-Option-S on the Mac).</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Network Monitor</h2>
+          <img class="bullet-image" src="../img/mike/App-Network-Monitor-icon.png" />
+          <ul>
+            <li>Inspect all network requests</li>
+            <ul><li>images, css/js files, ajax</li></ul>
+            <li>Examine request</li>
+            <li>Examine response</li>
+            <li>Timeline</li>
+            <li>Edit and resend</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Javascript Profiler</h2>
+          <img class="bullet-image" src="../img/mike/sh_profile7.gif" />
+          <ul>
+            <li>What is javascript doing?</li>
+            <li>Hot functions</li>
+            <li>Where to optimize</li>
+          </ul>
+        </section>
+        <section>
+          <h2>NEATO</h2>
+          <ul>
+            <li>Responsive Design View</li>
+            <li>Developer Toolbar</li>
+            <li>3D view</li>
+            <li>Paint Flashing Tool</li>
+            <li>Device Debugging</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Demo Time</h2>
+          <img class="bullet-image" src="../img/mike/WikiFun_Police_Smiley.png" />
+          <p>JS Fiddle</p>
+          <a href="http://jsfiddle.net/">http://jsfiddle.net/</a>
+          <p>Code, manipulate, run web pages on the fly</p>
+        </section>
+      </div>
+    </div>
+    <script src="../lib/js/head.min.js"></script>
+    <script src="../js/reveal.js"></script>
+    <script>
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+      });
+    </script>
+  </body>
+</html>
+
