@@ -22,8 +22,8 @@ function onMouseMove(e) {
     var d = Math.sqrt(xm * xm + ym * ym);
     text.style.textShadow = -xm + 'px ' + -ym + 'px ' + (d / 5 + 10) + 'px black';
 
-    xm = e.clientX;
-    ym = e.clientY;
+    xm = e.clientX - 600;
+    ym = e.clientY - 450;
     console.log("e.clientx = " + e.clientX);
     console.log("e.clienty = " + e.clientY);
     spot.style.backgroundPosition = xm + 'px ' + ym + 'px';
