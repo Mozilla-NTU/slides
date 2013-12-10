@@ -1,0 +1,12 @@
+body {
+  background-color: red;
+}
+
+#hello {
+  font-weight: bold;
+}
+
+.valid {
+  color: green;
+}
+
