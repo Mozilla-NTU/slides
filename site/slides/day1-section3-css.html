@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>CSS</title>
+    <title>Basics of CSS</title>
     <link rel="stylesheet" href="../css/reveal.css">
     <link rel="stylesheet" href="../css/theme/solarized.css" id="theme">
     <link rel="stylesheet" href="../lib/css/zenburn.css">
@@ -12,39 +12,20 @@
     <div class="reveal">
       <div class="slides">
       <section>
-        <h1>CSS</h1>
+        <h1>Basics of CSS</h1>
       </section>
-      <section>
-        <h2>Cascading Style Sheets</h2>
-        <blockquote>
-          CSS is a style sheet language used for describing the presentation semantics of a document written in a markup language.
-        </blockquote>
-      </section>
+      
       <section>
         <section>
-          <h2>Syntax</h2>
-          <img src="../img/wangyan/css-syntax.jpg">
+          <h2>Cascading Style Sheets</h2>
+          <blockquote>
+            CSS is a style sheet language used for describing the presentation semantics of a document written in a markup language.
+          </blockquote>
         </section>
-        <section>
-          <h2>Selectors</h2>
-          <ul>
-            <li>Elemento: h1 {....}</li>
-            <li>Class: .class {....}</li>
-            <li>Id: #class {....}</li>
-            <li>Attribute: input[type='radio'] {....}</li>
-            <li>Universal: * {....}</li>
-            <li>Other: new from CSS3</li>
-          </ul>
-        </section>
-        <section>
-          <h2>Selectors Specificity</h2>
-          <img src="../img/wangyan/css-specificity.jpg">
-          <p>Who is winner ?</p>
-        </section>
+        <section><img src="../img/wangyan/css-introduce.jpeg"></section>        
       </section>
       <section>
-        <section><h2>How to Use ?</h2></section>
-        <section>
+      <h2>How to Use ?</h2>
         <div class="text-left">
           <dl>
             <dt>Link Tag</dt>
@@ -63,6 +44,47 @@ p {
 </dd>
           </dl>
         </div>
+      </section>
+
+      <section>
+        <section>
+          <h2>Syntax</h2>
+          <img src="../img/wangyan/css-syntax.jpg">
+        </section>
+      </section>
+      <section>
+        <section>
+          <h2>Selectors</h2>
+          <ul>
+            <li>Elemento: h1 {....}</li>
+            <li>Class: .class {....}</li>
+            <li>Id: #class {....}</li>
+            <li>Attribute: input[type='radio'] {....}</li>
+            <li>Universal: * {....}</li>
+            <li>Other: new from CSS3</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Selectors Specificity</h2>
+          <img src="../img/wangyan/css-specificity.jpg" width="500">
+          <p>Who is winner ?</p>
+        </section>
+        <section>
+          <h2>Declaration</h2>
+          <pre><code>
+<style type="text/css"> 
+#selector {
+  color: white;
+  font-size: 14px;
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  fload: left;
+  position: absolute;
+  ...
+}            
+</style>
+          </code></pre>
         </section>
       </section>
       <section>
@@ -72,15 +94,35 @@ p {
         </section>
         <section>
           <img src="../img/wangyan/box-width.jpg" width="400">
-          <pre><code style="font-size: 35px; line-height: 50px;">.container {
+          <pre><code>.container {
   width: 50px;
   padding: 0 10px;
   border: 1px solid #333;
   margin: 0;
 }</code></pre>
         </section>
+        <section>
+          <h2>view it in 3d</h2>
+          <img src="../img/wangyan/3d-box.jpg" width="700">
+        </section>
       </section>
+
       <section>
+        <section>
+          <h2>Inline vs Block Elements</h2>
+          <img src="../img/wangyan/block-inline.jpg">
+        </section>
+        <section>
+        <ul>
+          <li>h1, p, div</li>
+          <li>span, a</li>
+          <li>change by display: inline, block, inline-block </li>
+        </ul>
+        </section>
+      </section>
+
+      <section>
+        <section>
         <h2>Position</h2>
         <ul>
           <li>Static</li>
@@ -88,23 +130,50 @@ p {
           <li>Relative</li>
           <li>Absolute</li>
         </ul>
+        </section>
+        <section>
+          <h2>Static</h2>
+          <img src="../img/wangyan/static.jpg">
+        </section>
+        <section>
+          <h2>Relative</h2>
+          <img src="../img/wangyan/relative.jpg">
+        </section>
+        <section>
+          <h2>Fixed</h2>
+          <img src="../img/wangyan/fixed.jpg">
+        </section>
+        <section>
+          <h2>Absolute</h2>
+          <img src="../img/wangyan/absolute.jpg" width="500">
+        </section>
       </section>
+
       <section>
-        <h2>Inline vs Block Elements</h2>
+         <section>
+          <h2>Float</h2>
+          <p>The floated elements will be taken out of the normal flow of the document.</p>
+         </section>
+         <section>
+          <img src="../img/wangyan/float.jpg">           
+         </section>
+      </section>
+
+      <section>
+        <h2>Browser Compatibility</h2>  
+        <img src="../img/wangyan/browser-compatibility.png">
+      </section>
+      
+      <section>
+        <h2>Best Practices</h2>
         <ul>
-          <li>h1, p, div</li>
-          <li>span, a</li>
-          <li>change by display: inline, block, inline-block </li>
-        </ul>
-      </section>
-      <section>
-         <h2>Float</h2>
-      </section>
-      <section>
-        <h2>TIPS</h2>
-        <ul>
-          <li>Cross Browsers</li>
-          <li>Forget IE ...</li>
+          <li>No inline css style</li>
+          <li>Don't repeat your self</li>
+          <li>Start with a Framework</li>
+          <li>Compress and Unify your CSS</li>
+          <li>Check browser compatibility all the time</li>
+          <li>Using firebug to debug</li>
+          <li>You need a designer</li>
         </ul>
       </section>
       </div>
