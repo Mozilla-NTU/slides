@@ -135,106 +135,105 @@
           <button id="volUp">Volume+</button>
           <button id="volDown">Volume-</button>
           <input id="seek" type="range" value="" max=""/>
+          <script>
+            var audio = document.getElementById("noControls");
+            var play = document.getElementById("play");
+            var volUp = document.getElementById("volUp");
+            var volDown = document.getElementById("volDown");
+            var seek = document.getElementById("seek");
+            var playing = false;
+
+            play.addEventListener("click", function (e) {
+              playing = !playing;
+              if (playing) {
+                audio.play();
+              } else {
+                audio.pause();
+              }
+            });
+
+            function changeVol (up) {
+              if (up) {
+                audio.volume += 0.1;
+              } else {
+                audio.volume -= 0.1;
+              }
+            };
+
+            volUp.addEventListener("click", function () {
+              changeVol(true);
+            });
+
+            volDown.addEventListener("click", function () {
+              changeVol(false);
+            });
+
+            audio.addEventListener("timeupdate", function (e) {
+              seek.value = audio.currentTime;
+            });
+
+            seek.min = seek.value = audio.seekable.start(0);
+            seek.max = audio.seekable.end(0);
+            seek.addEventListener("change", function (e) {
+              audio.currentTime = seek.value;
+            });
+          </script>
         </section>
-        <script>
-          var audio = document.getElementById("noControls");
-          var play = document.getElementById("play");
-          var volUp = document.getElementById("volUp");
-          var volDown = document.getElementById("volDown");
-          var seek = document.getElementById("seek");
-          var playing = false;
+        <section>
+          <pre><code>
+            &lt;audio id="noControls"&gt;
+              &lt;source src="../media/lateralus_clip.ogg" type="audio/ogg"/&gt;
+              &lt;source src="../media/lateralus_clip.mp3" type="audio/mp3"/&gt;
+            &lt;/audio&gt;
+            &lt;button id="play">Play/Pause&lt;/button&gt;
+            &lt;button id="volUp">Volume+&lt;/button&gt;
+            &lt;button id="volDown">Volume-&gt;/button&gt;
+            &lt;input id="seek" type="range" value="" max=""/&gt;
+            &lt;script&gt;
+              var audio = document.getElementById("noControls");
+              var play = document.getElementById("play");
+              var volUp = document.getElementById("volUp");
+              var volDown = document.getElementById("volDown");
+              var seek = document.getElementById("seek");
+              var playing = false;
 
-          play.addEventListener("click", function (e) {
-            playing = !playing;
-            if (playing) {
-              audio.play();
-            } else {
-              audio.pause();
-            }
-          });
+              play.addEventListener("click", function (e) {
+                playing = !playing;
+                if (playing) {
+                  audio.play();
+                } else {
+                  audio.pause();
+                }
+              });
 
-          function changeVol (up) {
-            if (up) {
-              audio.volume += 0.1;
-            } else {
-              audio.volume -= 0.1;
-            }
-          };
+              function changeVol (up) {
+                if (up) {
+                  audio.volume += 0.1;
+                } else {
+                  audio.volume -= 0.1;
+                }
+              };
 
-          volUp.addEventListener("click", function () {
-            changeVol(true);
-          });
+              volUp.addEventListener("click", function () {
+                changeVol(true);
+              });
 
-          volDown.addEventListener("click", function () {
-            changeVol(false);
-          });
+              volDown.addEventListener("click", function () {
+                changeVol(false);
+              });
 
-          audio.addEventListener("timeupdate", function (e) {
-            seek.value = audio.currentTime;
-          });
+              audio.addEventListener("timeupdate", function (e) {
+                seek.value = audio.currentTime;
+              });
 
-          seek.min = seek.value = audio.seekable.start(0);
-          seek.max = audio.seekable.end(0);
-          seek.addEventListener("change", function (e) {
-            audio.currentTime = seek.value;
-          });
-        </script>
-      </section>
-      <section>
-        <pre><code>
-          &lt;audio id="noControls"&gt;
-            &lt;source src="../media/lateralus_clip.ogg" type="audio/ogg"/&gt;
-            &lt;source src="../media/lateralus_clip.mp3" type="audio/mp3"/&gt;
-          &lt;/audio&gt;
-          &lt;button id="play">Play/Pause&lt;/button&gt;
-          &lt;button id="volUp">Volume+&lt;/button&gt;
-          &lt;button id="volDown">Volume-&gt;/button&gt;
-          &lt;input id="seek" type="range" value="" max=""/&gt;
-        &lt;/section&gt;
-        &lt;script&gt;
-          var audio = document.getElementById("noControls");
-          var play = document.getElementById("play");
-          var volUp = document.getElementById("volUp");
-          var volDown = document.getElementById("volDown");
-          var seek = document.getElementById("seek");
-          var playing = false;
-
-          play.addEventListener("click", function (e) {
-            playing = !playing;
-            if (playing) {
-              audio.play();
-            } else {
-              audio.pause();
-            }
-          });
-
-          function changeVol (up) {
-            if (up) {
-              audio.volume += 0.1;
-            } else {
-              audio.volume -= 0.1;
-            }
-          };
-
-          volUp.addEventListener("click", function () {
-            changeVol(true);
-          });
-
-          volDown.addEventListener("click", function () {
-            changeVol(false);
-          });
-
-          audio.addEventListener("timeupdate", function (e) {
-            seek.value = audio.currentTime;
-          });
-
-          seek.min = seek.value = audio.seekable.start(0);
-          seek.max = audio.seekable.end(0);
-          seek.addEventListener("change", function (e) {
-            audio.currentTime = seek.value;
-          });
-        &lt;/script&gt;
-        </code></pre>
+              seek.min = seek.value = audio.seekable.start(0);
+              seek.max = audio.seekable.end(0);
+              seek.addEventListener("change", function (e) {
+                audio.currentTime = seek.value;
+              });
+            &lt;/script&gt;
+          </code></pre>
+        </section>
       </div>
     </div>
     <script src="../lib/js/head.min.js"></script>
