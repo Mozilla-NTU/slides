@@ -234,6 +234,58 @@
             &lt;/script&gt;
           </code></pre>
         </section>
+        <section>
+          <h2>Events</h2>
+          <audio id="audioA" controls>
+            <source src="../media/lateralus_clip.ogg" type="audio/ogg"/>
+            <source src="../media/lateralus_clip.mp3" type="audio/mp3"/>
+          </audio>
+          <br>
+          <audio id="audioB" controls>
+            <source src="../media/lateralus_clip.ogg" type="audio/ogg"/>
+            <source src="../media/lateralus_clip.mp3" type="audio/mp3"/>
+          </audio>
+          <script>
+            var audioA = document.getElementById("audioA");
+            var audioB = document.getElementById("audioB");
+
+            audioA.addEventListener("ended", function () {
+              audioB.currentTime = 0;
+              audioB.play();
+            });
+
+            audioB.addEventListener("ended", function () {
+              audioA.currentTime = 0;
+              audioA.play();
+            });
+          </script>
+          <pre><code>
+            &lt;audio id="audioA" controls&gt;
+              &lt;source src="../media/lateralus_clip.ogg" type="audio/ogg"/&gt;
+              &lt;source src="../media/lateralus_clip.mp3" type="audio/mp3"/&gt;
+            &lt;/audio&gt;
+            &lt;br/&gt;
+            &lt;audio id="audioB" controls&gt;
+              &lt;source src="../media/lateralus_clip.ogg" type="audio/ogg"/&gt;
+              &lt;source src="../media/lateralus_clip.mp3" type="audio/mp3"/&gt;
+            &lt;/audio&gt;
+            &lt;script&gt;
+              var audioA = document.getElementById("audioA");
+              var audioB = document.getElementById("audioB");
+
+              audioA.addEventListener("ended", function () {
+                audioB.currentTime = 0;
+                audioB.play();
+              });
+
+              audioB.addEventListener("ended", function () {
+                audioA.currentTime = 0;
+                audioA.play();
+              });
+            &lt;/script&gt;
+          </code></pre>
+          <p>More events at <a href="http://areweplayingyet.com/">Are We Playing Yet?</a></p>
+        </section>
       </div>
     </div>
     <script src="../lib/js/head.min.js"></script>
