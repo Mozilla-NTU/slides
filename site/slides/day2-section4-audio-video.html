@@ -101,7 +101,8 @@
             function canPlayOgg () {
               var a = document.createElement('audio');
               return !!(a.canPlayType &amp;&amp;
-                        a.canPlayType('audio/mpeg;').replace(/no/, ''));
+                        a.canPlayType('audio/ogg; codecs="vorbis"')
+                         .replace(/no/, ''));
             };
 
             canPlayOgg(); // true or false
