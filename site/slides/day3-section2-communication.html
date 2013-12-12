@@ -24,34 +24,63 @@
           <section><h2>Cross Document Messaging</h2></section>
           <section>
             <h3>postMessage API</h3>
-            <pre><code>
-if (typeof window.postMessage === “undefined”) {
-  // postMessage not supported in this browser
-}
-
-// in the recipient code
-recipient.onmessage = function (event) {
+            <dl class="text-left">
+              <dt>sender</dt>
+              <pre><code>
+senderWindow.postMessage("hi there", "http://receiver.site");
+              </code></pre>
+              <dt>receiver</dt>
+              <pre><code>
+receiverWindow.onmessage = function (event) {
+  if (event.origin !== "http://sender.site") {
+    return;
+  }
   console.log('received message: ' + event.data);
 };
+              </code></pre>
+            </dl>
+          </section>
 
-// from the sender code
-recipient.postMessage('hi there');
-            </code></pre>
-          </section>
-        </section>
-        <section>
-          <section><h2>XMLHttpRequest Level 2</h2></section>
           <section>
-            <h3>the new version of XMLHttpRequest</h3>
-            <ul>
-              <li>Cross-origin XMLHttpRequests</li>
-              <li>Progress events</li>
-              <li>Binary Data</li>
-            </ul>
+            <h2>whether it supports ?</h2>
+              <pre><code>
+if (window.postMessage) {
+  console.log("postMessage not supported in this browser")
+}
+            </code></pre>            
           </section>
         </section>
         <section>
-          <h2><del>ServerSent Event</del></h2>
+          <h2>XMLHttpRequest Level 2</h2>
+          <ul>
+            <li>Cross-origin XMLHttpRequests</li>
+            <li>Progress events</li>
+            <li>Binary Data</li>
+          </ul>
+        </section>
+        <section>
+          <section><h2>ServerSent Event</h2></section>
+          <section>
+            <dl class="text-left">
+              <dt>Receiving data from server</dt>
+              <pre><code>              
+var evtSource = new EventSource("/event-source"); 
+evtSource.onmessage = function(e) {
+     console.log(e.data);
+}
+              </code></pre>
+              <dt>Sending data from server</dt>
+              <pre><code>
+get "/event-source" do
+     response.headers['Content-Type'] = 'text/event-stream'
+     while (1) {
+           return "data: message from server \n\n"
+           wait_random_time
+     }
+end                
+              </code></pre>
+            </dl>
+          </section>
         </section>
         <section>
           <section><h2>WebSocket</h2></section>
@@ -72,7 +101,7 @@ recipient.postMessage('hi there');
         </section>
         <section>
           <h2>Why ?</h2>
-          <p class="fragment"> Web apps need to communicate with server in real-time </p>
+          <p> Web apps need to communicate with server in real-time </p>
         </section>
         <section>
           <h2>Can't we already do that ?</h2>
@@ -156,7 +185,7 @@ recipient.postMessage('hi there');
         <section>
           <section>
             <h2>WEBSOCKETS</h2>
-            <p style="font-size: 18px;">Client opens connection with server<br>
+            <p style="font-size: 26px;">Client opens connection with server<br>
             Client and server send data to each other as data becomes available on either side 
             </p>
             <img src="../img/wangyan/websockets.png" width="500">
@@ -179,7 +208,7 @@ recipient.postMessage('hi there');
           </section>          
         </section>
         <section>
-           <h2>But how it works ?</h2>
+           <h2>how it works ?</h2>
         </section>
         <section>
           <section>
@@ -291,7 +320,7 @@ io.sockets.on('connection', function (socket) {
 
         <section>
           <h2>Use Cases</h2>
-          <ul class="fragment">
+          <ul>
             <li>Games</li>
             <li>Notifications</li>
             <li>Collaboration</li>
@@ -302,9 +331,7 @@ io.sockets.on('connection', function (socket) {
 
         <section>
           <h2>Demo</h2>
-        </section>
-        <section>
-          <h2>Use Your Imagination</h2>
+          <a href="http://ntu.meteor.com" target="_blank">last mile</a>
         </section>
       </div>
     </div>
