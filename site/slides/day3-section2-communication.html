@@ -27,11 +27,13 @@
             <dl class="text-left">
               <dt>sender</dt>
               <pre><code>
-senderWindow.postMessage("hi there", "http://receiver.site");
+// this is on http://sender.site              
+otherWindow.postMessage("hi there", "http://receiver.site");
               </code></pre>
               <dt>receiver</dt>
               <pre><code>
-receiverWindow.onmessage = function (event) {
+// this is on http://receiver.site
+window.onmessage = function (event) {
   if (event.origin !== "http://sender.site") {
     return;
   }
