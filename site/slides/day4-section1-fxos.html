@@ -2,27 +2,149 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Template</title>
+    <title>Firefox OS</title>
     <link rel="stylesheet" href="../css/reveal.css">
-    <link rel="stylesheet" href="../css/theme/default.css" id="theme">
+    <link rel="stylesheet" href="../css/mike/custom.css">
+    <link rel="stylesheet" href="../css/theme/beige.css" id="theme">
   </head>
   <body>
     <div class="reveal">
       <div class="slides">
         <section>
-<ul>
-    <li>Course Introduction</li>
-
-    <li>Course software</li>
-
-    <li>What is a HTML and HTML5?</li>
-
-    <li>Getting started with tags</li>
-
-    <li>How to run web pages</li>
-
-    <li>Viewing your web pagess</li>
-</ul>
+          <h1 id="hot-tip">HOT TIP!<img class="left" src="../img/mike/Meet-the-Firefox-OS-Mascot-a-Fox-That-s-on-Fire.png" /><img class="right" src="../img/mike/Meet-the-Firefox-OS-Mascot-a-Fox-That-s-on-Fire.png" /></h1>
+          <h2>Hacker News</h2>
+          <img style="border-radius: 20px;" class="bullet-image" src="../img/mike/hacker-news-logo.png" />
+          <ul>
+            <li>News that programmers find interesting</li>
+            <li>Links &amp; discussion borad</li>
+            <li>Vote based, like Reddit</li>
+            <li>Range of topics</li>
+            <ul><li>- startup news</li></ul>
+            <ul><li>- programming languages</li></ul>
+            <ul><li>- science</li></ul>
+            <ul><li>- politics</li></ul>
+            <li><a href="https://news.ycombinator.com/">Check it out!</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Firefox OS</h2>
+          <img class="bullet-image" src="../img/mike/firefoxos-newbrand.png" />
+          <ul>
+            <li>Phone Operating System</li>
+            <li>Linux, boots straight to browser</li>
+            <li>All apps run in browser</li>
+            <ul><li>- apps are just html/css/javascript</li></ul>
+            <ul><li>- including Telephone, Wifi settings, etc</li></ul>
+          </ul>
+        </section>
+        <section>
+          <h2>Firefox OS vs. Web pages</h2>
+          <img style="border-radius: 20px;" class="bullet-image" src="../img/mike/recreated_firefox_logo_western_hemisphere.png" />
+          <ul>
+            <li>Very Similar</li>
+            <li>Need a manifest</li>
+            <li>Phonebill payments</li>
+            <li>Phone specific APIs</li>
+            <li>Can be packaged</li>
+            <ul><li>- added to marketplace</li></ul>
+            <ul><li>- downloaded all at once</li></ul>
+            <li>Many webpages can be both</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Firefox OS vs. Native</h2>
+          <img class="bullet-image" src="../img/mike/illo-fxandroidphone.png" />
+          <ul>
+            <li>Native apps are compile binaries</li>
+            <li>Native can have web views</li>
+            <ul><li>- but not vice versa</li></ul>
+            <li>Native apps must be packed</li>
+            <ul><li>- must go through review</li></ul>
+            <ul><li>- must installed through market</li></ul>
+            <li>Different for each platform</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Web API</h2>
+          <img class="bullet-image" src="../img/mike/superman_joe_shuster.png" />
+          <ul>
+            <li>Mozilla working project</li>
+            <ul><li>- we needed greater power apps</li></ul>
+            <ul><li>- hardware (battery), data (contacts)</li></ul>
+            <li>Web API is our spec</li>
+            <li>We are pushing to standardize</li>
+            <li>Make the web more powerful for everyone!</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Hardware Access</h2>
+          <img class="bullet-image" src="../img/mike/MOTOROLA_photonparts55978456.jpg" />
+          <ul>
+            <li>Ambient Light Sensor</li>
+            <ul><li>- apps detect light level</li></ul>
+            <ul><li>- change screen brightness</li></ul>
+            <li>Battery status</li>
+            <ul><li>- access to batter charge</li></ul>
+            <li>Geolocation</li>
+            <ul><li>- where is the user</li></ul>
+            <ul><li>- great for maps, and games</li></ul>
+            <li>Proximity</li>
+            <ul><li>- detect objects close to camera</li></ul>
+            <ul><li>- face detection</li></ul>
+          </ul>
+        </section>
+        <section>
+          <h2>Hardware Access</h2>
+          <img class="bullet-image" src="../img/mike/MOTOROLA_photonparts55978456.jpg" />
+          <ul>
+            <li>Device Orientation</li>
+            <ul><li>- respond to device movements</li></ul>
+            <li>Screen Orientation</li>
+            <ul><li>- portrait or landscape?</li></ul>
+            <ul><li>- set a preference for you app</li></ul>
+            <li>Vibration</li>
+            <ul><li>- haptic feedback</li></ul>
+            <ul><li>- for games, not notifications</li></ul>
+            <li>WebFM</li>
+            <ul><li>- access radio</li></ul>
+            <li>Power Management</li>
+            <ul><li>- turn off screen to save power</li></ul>
+          </ul>
+        </section>
+        <section>
+          <h2>Data Management</h2>
+          <img class="bullet-image" src="../img/mike/grey-abstract.png" />
+          <ul>
+            <li>FileHandle</li>
+            <ul><li>- support writing files</li></ul>
+            <li>Indexed DB</li>
+            <ul><li>- NoSQL database in the browser</li></ul>
+            <li>Contacts</li>
+            <ul><li>- phonebook access</li></ul>
+            <li>Settings</li>
+            <ul><li>- access to phone settings</li></ul>
+          </ul>
+        </section>
+        <section>
+          <h2>Other APIs</h2>
+          <img class="bullet-image" src="../img/mike/api-image.png" />
+          <ul>
+            <li>Apps</li>
+            <ul><li>- manipulate apps</li></ul>
+            <ul><li>- install, launch close</li></ul>
+            <li>Alarm</li>
+            <ul><li>- schedule notifications</li></ul>
+            <li>Simple Push</li>
+            <ul><li>- send messages to apps</li></ul>
+            <li>Web Notifications</li>
+            <ul><li>- send immediate notification</li></ul>
+            <li>Web Activities</li>
+            <ul><li>- delegate activities between apps</li></ul>
+            <ul><li>- ex. ask the camera to open a photo</li></ul>
+            <li>Web Activities</li>
+            <ul><li>- payments made through web</li></ul>
+            <ul><li>- does to phone bill</li></ul>
+          </ul>
         </section>
       </div>
     </div>
